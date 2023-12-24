@@ -1,0 +1,296 @@
+units:
+  kx: cx
+  ky: cy
+  px: kx
+  py: ky
+  kxo: 0.5 * kx
+  kyo: 0.5 * ky
+
+  # PG1232 Kailh Choc Mini plate cutout
+  plate_kx: 13.6
+  plate_ky: 12.6
+
+  # Font units
+  font_x: 1
+  font_y: 1
+  font_xo: 0.5 font_x
+  font_yo: 0.5 * font_y
+
+  # Nice Nano
+  # The nice nano footprint's center doesn't account
+  # for the 2.54mm "overhang" of the PCB beyond the pins.
+  mcu_overhang_y: 2.54
+  mcu_spacing_x: 2.72
+  mcu_x: 17.78 + mcu_spacing_x
+  mcu_y: 30.48 + mcu_overhang_y
+  mcu_xo: 0.5 * mcu_x
+  mcu_yo: 0.5 * mcu_y + 0.5 * mcu_overhang_y
+
+  # Reset Switch
+  sw_reset_x: 3.4
+  sw_reset_y: 5
+  sw_reset_xo: 0.5 * sw_reset_x
+  sw_reset_yo: 0.5 * sw_reset_y
+
+points:
+  key:
+    padding: ky
+    spread: kx
+    width: kx
+    height: ky
+  zones:
+    matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [35, -100]
+      key.tags: key
+      columns:
+        left:
+          key:
+            spread: kx * 0.25
+            width: kx * 1.5
+            asym: left
+            column_net: C0
+        q:
+          key:
+            spread: kx * 1.25
+            column_net: C1
+        w:
+          key.column_net: C2
+        e:
+          key.column_net: C3
+        r:
+          key.column_net: C4
+        t:
+          key.column_net: C5
+
+      rows:
+        bottom:
+          row_net: R4
+        home:
+          row_net: R3
+        top:
+          row_net: R2
+        num:
+          row_net: R1
+        f:
+          row_net: R0
+
+    leftcluster:
+      key:
+        spread: kx * 1.5
+        width: kx * 1.5
+        kx: kx * 1.5
+        asym: left
+        tags: key
+      anchor:
+        ref: matrix_left_bottom
+        shift: [0, -2ky]
+      columns:
+        one:
+          key.column_net: C0
+        two:
+          key.column_net: C1
+        three:
+          key.column_net: C2
+      rows:
+        down:
+          row_net: R7
+        up:
+          row_net: R6
+
+    bigenters:
+      key:
+        spread: kx * 1.5
+        width: kx * 1.5
+        kx: kx * 1.5
+        padding: 2ky
+        height: 2ky
+        tags: [key, enter, 2u_stabilizer_90]
+
+      anchor:
+        ref: matrix_t_top
+        shift: [kx * 1.25, -1.5ky]
+      columns:
+        one:
+          key.column_net: C6
+      rows:
+        enter:
+          row_net: R2
+        back:
+          padding: ky * 1.5
+          row_net: R1
+        f:
+          height: ky
+          tags: key
+          row_net: R0
+    spaces:
+      key.tags: key
+      anchor:
+        ref: leftcluster_three_up
+        shift: [0.25 * kx, 0]
+      columns:
+        alt:
+          key:
+            asym: right
+            column_net: C3
+        space:
+          key:
+            width: 3.5kx
+            spread: 2.25kx
+            column_net: C4
+            tags: [key, space, 3u_stabilizer]
+      rows:
+        space:
+          row_net: R6
+
+    #  Controller
+    #
+    controller:
+      anchor:
+        ref: bigenters_one_f
+        shift: [0.75 * kx + mcu_xo, kyo -2.25 - mcu_yo]
+      key:
+        name: mcu
+        width: mcu_x
+        height: mcu_y
+
+  mirror: &mirror
+    ref: bigenters_one_f
+    distance: 100
+outlines:
+
+  _keys:
+    - what: rectangle
+      where: [[key, -enter, -space]]
+      size: [plate_kx/2, plate_ky/2]
+  _enters:
+    - what: rectangle
+      where: [[key, enter]]
+      size: [plate_ky/2, plate_kx/2]
+  _spaces:
+    - what: rectangle
+      where: [[key, space]]
+      size: [plate_kx/2, plate_ky/2]
+
+  _outline:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: matrix_left_f
+          shift: [-kx * 0.75, ky * 0.5]
+        - ref: bigenters_one_f
+          shift: [kx * 0.75, ky * 0.5]
+        - ref: spaces_space_space
+          shift: [kx * 1.75, -ky * 0.5]
+        - ref: leftcluster_three_down
+          shift: [kx * 0.75, ky * 0.5]
+        - ref: leftcluster_three_down
+          shift: [kx * 0.75, -ky * 0.5]
+        - ref: leftcluster_one_down
+          shift: [-kx * 0.75, -ky * 0.5]
+
+  _mcuears:
+    - what: rectangle
+      size: [mcu_x +10, 6ky]
+      fillet: 2
+
+  pcb_outline:
+    - name: _outline
+    - operation: add
+      name: _mcuears
+      where:
+        ref: bigenters_one_f
+        shift: [0.75 * kx + mcu_x/2 -5, -2.5ky]
+
+  top:
+    - name: _outline
+    - operation: subtract
+      name: _keys
+    - operation: subtract
+      name: _enters
+    - operation: subtract
+      name: _spaces
+
+  bottom:
+    - name: pcb_outline
+
+pcbs:
+  board:
+    outlines:
+      left:
+        outline: pcb_outline
+    footprints:
+      choc:
+        what: chocmini
+        where:
+          - /^matrix_.*/
+          - /leftcluster_.*/
+          - [/^bigenters_.*/, key, -enter]
+          - /^spaces_.*/
+        params:
+          keycaps: true
+          reverse: false
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+      diode:
+        what: diode
+        where:
+          - /^matrix_.*/
+          - /leftcluster_.*/
+          - /^spaces_.*/
+          - [/^bigenters_.*/, key, -enter]
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          tht: false # No through hole
+          side: B # Bottom only
+        adjust:
+          shift: [-1.4, -6]
+          rotate: 180
+      # Controller Area
+      promicro:
+        what: promicro
+        params:
+          # Pin Assignments (Controller on top facing down)
+          # Right Side
+          P0: "DPD" # Display Data
+          P1: "DPC" # Display Clock
+          # GND
+          # GND
+          P2: "DPE" # Display CS (nice!view only) FIXME? ZPM default?
+          P3: "R1" # Row
+          P4: "R2" # Row
+          P5: "R3" # Row
+          P6: "R4" # Row
+          P7: "R5" # Row
+          P8: "R6" # Row
+          P9: "R7" # Row
+
+          # Left Side
+          RAW: "BAT_P" # Battery Pos
+          # GND       # Ground / Battery Neg
+          # RST       # Reset pin
+          # VCC       # External Power
+          P21: "C0" # Column
+          P20: "C1" # Column
+          P19: "C2" # Column
+          P18: "C3" # Column
+          P15: "C4" # Column
+          P14: "C5" # Column
+          P16: "C6" # Column
+          P10: "F10" # Free
+
+        where:
+          ref: mcu
+          shift: [0, 0]
+          rotate: -90
+      reset:
+        what: button
+        params:
+          from: GND
+          to: RST
+        where:
+          ref: mcu
+          shift: [mcu_x, -mcu_y/2 - 8]
