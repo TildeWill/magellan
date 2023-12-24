@@ -66,7 +66,7 @@ points:
         f:
           row_net: R0
 
-    leftcluster:
+    thumb_cluster:
       key:
         spread: kx * 1.5
         width: kx * 1.5
@@ -117,7 +117,7 @@ points:
     spaces:
       key.tags: key
       anchor:
-        ref: leftcluster_three_up
+        ref: thumb_cluster_three_up
         shift: [0.25 * kx, 0]
       columns:
         alt:
@@ -174,11 +174,11 @@ outlines:
           shift: [kx * 0.75, ky * 0.5]
         - ref: spaces_space_space
           shift: [kx * 1.75, -ky * 0.5]
-        - ref: leftcluster_three_down
+        - ref: thumb_cluster_three_down
           shift: [kx * 0.75, ky * 0.5]
-        - ref: leftcluster_three_down
+        - ref: thumb_cluster_three_down
           shift: [kx * 0.75, -ky * 0.5]
-        - ref: leftcluster_one_down
+        - ref: thumb_cluster_one_down
           shift: [-kx * 0.75, -ky * 0.5]
 
   _mcuears:
@@ -216,7 +216,7 @@ pcbs:
         what: chocmini
         where:
           - /^matrix_.*/
-          - /leftcluster_.*/
+          - /thumb_cluster_.*/
           - [/^bigenters_.*/, key, -enter]
           - /^spaces_.*/
         params:
@@ -228,7 +228,7 @@ pcbs:
         what: diode
         where:
           - /^matrix_.*/
-          - /leftcluster_.*/
+          - /thumb_cluster_.*/
           - /^spaces_.*/
           - [/^bigenters_.*/, key, -enter]
         params:
