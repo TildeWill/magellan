@@ -45,23 +45,15 @@ points:
         shift: [35, -100]
       key.tags: key
       columns:
-        left:
-          key:
-            spread: kx * 0.25
-            width: kx * 1.5
-            asym: left
-            column_net: C0
-        q:
-          key:
-            spread: kx * 1.25
-            column_net: C1
-        w:
+        pinky:
+          key.column_net: C0
+        ring:
+          key.column_net: C1
+        index:
           key.column_net: C2
-        e:
+        pointer:
           key.column_net: C3
-        r:
-          key.column_net: C4
-        t:
+        inner:
           key.column_net: C5
 
       rows:
@@ -71,8 +63,6 @@ points:
           row_net: R3
         top:
           row_net: R2
-        num:
-          row_net: R1
         f:
           row_net: R0
 
@@ -84,7 +74,7 @@ points:
         asym: left
         tags: key
       anchor:
-        ref: matrix_left_bottom
+        ref: matrix_pinky_bottom
         shift: [0, -2ky]
       columns:
         one:
@@ -109,7 +99,7 @@ points:
         tags: [key, enter, 2u_stabilizer_90]
 
       anchor:
-        ref: matrix_t_top
+        ref: matrix_inner_top
         shift: [kx * 1.25, -1.5ky]
       columns:
         one:
@@ -178,7 +168,7 @@ outlines:
       operation: stack
       fillet: 2
       points:
-        - ref: matrix_left_f
+        - ref: matrix_pinky_f
           shift: [-kx * 0.75, ky * 0.5]
         - ref: bigenters_one_f
           shift: [kx * 0.75, ky * 0.5]
