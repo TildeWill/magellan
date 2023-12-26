@@ -111,13 +111,29 @@ outlines:
       fillet: 2
       points:
         - ref: matrix_pinky_top
-          shift: [-kx * 0.75, ky * 0.5]
+          shift: [-0.75kx, 0.5ky]
         - ref: matrix_inner_top
-          shift: [kx * 0.75, ky * 0.5]
+          shift: [0.75kx, 0.5ky]
+        - ref: mirror_matrix_inner_top
+          shift: [0.75kx, 0.5ky]
+        - ref: mirror_matrix_pinky_top
+          shift: [-0.75kx, 0.5ky ]
+
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-0.75kx, -0.5ky ]
+
+        - ref: mirror_thumb_cluster_one_thumb_row
+          shift: [ -0.75kx, -0.5ky ]
+        - ref: mirror_thumb_cluster_three_thumb_row
+          shift: [ 0.75kx, -0.5ky ]
+
         - ref: thumb_cluster_three_thumb_row
-          shift: [kx * 0.75, ky * 0.5]
+          shift: [0.75kx, -0.5ky]
         - ref: thumb_cluster_one_thumb_row
-          shift: [kx * 0.75, -ky * 0.5]
+          shift: [-0.75kx, -0.5ky]
+
+        - ref: matrix_pinky_bottom
+          shift: [-0.75kx, -0.5ky]
 
   _mcuears:
     - what: rectangle
@@ -156,6 +172,7 @@ pcbs:
         params:
           keycaps: true
           reverse: false
+          hotswap: true
           from: "{{colrow}}"
           to: "{{column_net}}"
       diode:
@@ -167,8 +184,7 @@ pcbs:
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
-          tht: false # No through hole
-          side: B # Bottom only
+          designator: "D"
         adjust:
           shift: [-1.4, -6]
           rotate: 180
