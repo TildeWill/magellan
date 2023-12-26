@@ -16,21 +16,11 @@ units:
   font_xo: 0.5 font_x
   font_yo: 0.5 * font_y
 
-  # Nice Nano
-  # The nice nano footprint's center doesn't account
-  # for the 2.54mm "overhang" of the PCB beyond the pins.
+  # MCU
   mcu_overhang_y: 2.54
   mcu_spacing_x: 2.72
   mcu_x: 17.78 + mcu_spacing_x
   mcu_y: 30.48 + mcu_overhang_y
-  mcu_xo: 0.5 * mcu_x
-  mcu_yo: 0.5 * mcu_y + 0.5 * mcu_overhang_y
-
-  # Reset Switch
-  sw_reset_x: 3.4
-  sw_reset_y: 5
-  sw_reset_xo: 0.5 * sw_reset_x
-  sw_reset_yo: 0.5 * sw_reset_y
 
 points:
   key:
@@ -63,6 +53,9 @@ points:
           row_net: R3
         top:
           row_net: R2
+      mirror: &mirror
+        ref: matrix_inner_top
+        distance: 6kx
 
     thumb_cluster:
       key:
@@ -81,25 +74,38 @@ points:
         thumb_row:
           row_net: R7
 
+      mirror: &thumb_mirror
+        ref: matrix_inner_top
+        distance: 6kx
 
+    keeb_center:
+      anchor:
+        ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+        shift: [0, 0]
 
     #  Controller
-    #
     controller:
       anchor:
-        ref: matrix_inner_top
-        shift: [2kx, 0]
+        ref: keeb_center
+        shift: [0, 0]
       key:
         name: mcu
         width: mcu_x
         height: mcu_y
 
-  mirror: &mirror
-    ref: matrix_inner_top
-    distance: 100
+    #  Azoteq TPS65 Trackpad
+    trackpad:
+      anchor:
+        ref: keeb_center
+        shift: [0, -15]
+      key:
+        name: trackpad
+        width: 65
+        height: 39
+
+
 
 outlines:
-
   _keys:
     - what: rectangle
       where: [[key, -enter, -space]]
@@ -118,15 +124,12 @@ outlines:
           shift: [0.75kx, 0.5ky]
         - ref: mirror_matrix_pinky_top
           shift: [-0.75kx, 0.5ky ]
-
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.75kx, -0.5ky ]
-
         - ref: mirror_thumb_cluster_one_thumb_row
           shift: [ -0.75kx, -0.5ky ]
         - ref: mirror_thumb_cluster_three_thumb_row
           shift: [ 0.75kx, -0.5ky ]
-
         - ref: thumb_cluster_three_thumb_row
           shift: [0.75kx, -0.5ky]
         - ref: thumb_cluster_one_thumb_row
