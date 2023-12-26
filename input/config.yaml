@@ -97,7 +97,7 @@ outlines:
       where: [[key, -enter, -space]]
       size: [kx/2, ky/2]
 
-  _outline:
+  pcb_outline:
     - what: polygon
       operation: stack
       fillet: 2
@@ -120,25 +120,12 @@ outlines:
           shift: [0.75kx, -0.5ky]
         - ref: thumb_cluster_one_thumb_row
           shift: [-0.75kx, -0.5ky]
-
         - ref: matrix_pinky_bottom
           shift: [-0.75kx, -0.5ky]
 
-  _mcuears:
-    - what: rectangle
-      size: [mcu_x +10, 6ky]
-      fillet: 2
-
-  pcb_outline:
-    - name: _outline
-    - operation: add
-      name: _mcuears
-      where:
-        ref: matrix_pinky_top
-        shift: [0.75 * kx + mcu_x/2 -5, -2.5ky]
 
   top:
-    - name: _outline
+    - name: pcb_outline
     - operation: subtract
       name: _keys
 
