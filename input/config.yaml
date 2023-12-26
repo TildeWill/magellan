@@ -6,9 +6,9 @@ units:
   kxo: 0.5 * kx
   kyo: 0.5 * ky
 
-  # PG1232 Kailh Choc Mini plate cutout
-  plate_kx: 13.6
-  plate_ky: 12.6
+  # Kailh Choc v1
+  plate_kx: kx
+  plate_ky: ky
 
   # Font units
   font_x: 1
@@ -63,8 +63,6 @@ points:
           row_net: R3
         top:
           row_net: R2
-        f:
-          row_net: R0
 
     thumb_cluster:
       key:
@@ -84,69 +82,24 @@ points:
         three:
           key.column_net: C2
       rows:
-        down:
+        thumb_row:
           row_net: R7
-        up:
-          row_net: R6
 
-    bigenters:
-      key:
-        spread: kx * 1.5
-        width: kx * 1.5
-        kx: kx * 1.5
-        padding: 2ky
-        height: 2ky
-        tags: [key, enter, 2u_stabilizer_90]
 
-      anchor:
-        ref: matrix_inner_top
-        shift: [kx * 1.25, -1.5ky]
-      columns:
-        one:
-          key.column_net: C6
-      rows:
-        enter:
-          row_net: R2
-        back:
-          padding: ky * 1.5
-          row_net: R1
-        f:
-          height: ky
-          tags: key
-          row_net: R0
-    spaces:
-      key.tags: key
-      anchor:
-        ref: thumb_cluster_three_up
-        shift: [0.25 * kx, 0]
-      columns:
-        alt:
-          key:
-            asym: right
-            column_net: C3
-        space:
-          key:
-            width: 3.5kx
-            spread: 2.25kx
-            column_net: C4
-            tags: [key, space, 3u_stabilizer]
-      rows:
-        space:
-          row_net: R6
 
     #  Controller
     #
     controller:
       anchor:
-        ref: bigenters_one_f
-        shift: [0.75 * kx + mcu_xo, kyo -2.25 - mcu_yo]
+        ref: matrix_pinky_top
+        shift: [0, 0]
       key:
         name: mcu
         width: mcu_x
         height: mcu_y
 
   mirror: &mirror
-    ref: bigenters_one_f
+    ref: matrix_pinky_top
     distance: 100
 outlines:
 
@@ -168,18 +121,14 @@ outlines:
       operation: stack
       fillet: 2
       points:
-        - ref: matrix_pinky_f
+        - ref: matrix_pinky_top
           shift: [-kx * 0.75, ky * 0.5]
-        - ref: bigenters_one_f
+        - ref: matrix_inner_top
           shift: [kx * 0.75, ky * 0.5]
-        - ref: spaces_space_space
-          shift: [kx * 1.75, -ky * 0.5]
-        - ref: thumb_cluster_three_down
+        - ref: thumb_cluster_three_thumb_row
           shift: [kx * 0.75, ky * 0.5]
-        - ref: thumb_cluster_three_down
+        - ref: thumb_cluster_one_thumb_row
           shift: [kx * 0.75, -ky * 0.5]
-        - ref: thumb_cluster_one_down
-          shift: [-kx * 0.75, -ky * 0.5]
 
   _mcuears:
     - what: rectangle
@@ -191,7 +140,7 @@ outlines:
     - operation: add
       name: _mcuears
       where:
-        ref: bigenters_one_f
+        ref: matrix_pinky_top
         shift: [0.75 * kx + mcu_x/2 -5, -2.5ky]
 
   top:
@@ -213,11 +162,10 @@ pcbs:
         outline: pcb_outline
     footprints:
       choc:
-        what: chocmini
+        what: choc
         where:
           - /^matrix_.*/
           - /thumb_cluster_.*/
-          - [/^bigenters_.*/, key, -enter]
           - /^spaces_.*/
         params:
           keycaps: true
@@ -230,7 +178,6 @@ pcbs:
           - /^matrix_.*/
           - /thumb_cluster_.*/
           - /^spaces_.*/
-          - [/^bigenters_.*/, key, -enter]
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
