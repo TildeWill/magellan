@@ -1,20 +1,6 @@
 units:
   kx: cx
   ky: cy
-  px: kx
-  py: ky
-  kxo: 0.5 * kx
-  kyo: 0.5 * ky
-
-  # Kailh Choc v1
-  plate_kx: kx
-  plate_ky: ky
-
-  # Font units
-  font_x: 1
-  font_y: 1
-  font_xo: 0.5 font_x
-  font_yo: 0.5 * font_y
 
   # MCU
   mcu_overhang_y: 2.54
@@ -24,10 +10,10 @@ units:
 
 points:
   key:
-    padding: ky
-    spread: kx
-    width: kx
-    height: ky
+    padding: 1ky
+    spread: 1kx
+    width: 1kx
+    height: 1ky
   zones:
     matrix:
       # Fix placement on KiCAD sheet.
@@ -109,7 +95,7 @@ outlines:
   _keys:
     - what: rectangle
       where: [[key, -enter, -space]]
-      size: [plate_kx/2, plate_ky/2]
+      size: [kx/2, ky/2]
 
   _outline:
     - what: polygon
