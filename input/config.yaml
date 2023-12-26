@@ -49,9 +49,9 @@ points:
           key.column_net: C0
         ring:
           key.column_net: C1
-        index:
+        middle:
           key.column_net: C2
-        pointer:
+        index:
           key.column_net: C3
         inner:
           key.column_net: C5
@@ -66,14 +66,10 @@ points:
 
     thumb_cluster:
       key:
-        spread: kx * 1.5
-        width: kx * 1.5
-        kx: kx * 1.5
-        asym: left
         tags: key
       anchor:
-        ref: matrix_pinky_bottom
-        shift: [0, -2ky]
+        ref: matrix_inner_bottom
+        shift: [0, -1ky]
       columns:
         one:
           key.column_net: C0
@@ -91,29 +87,22 @@ points:
     #
     controller:
       anchor:
-        ref: matrix_pinky_top
-        shift: [0, 0]
+        ref: matrix_inner_top
+        shift: [2kx, 0]
       key:
         name: mcu
         width: mcu_x
         height: mcu_y
 
   mirror: &mirror
-    ref: matrix_pinky_top
+    ref: matrix_inner_top
     distance: 100
+
 outlines:
 
   _keys:
     - what: rectangle
       where: [[key, -enter, -space]]
-      size: [plate_kx/2, plate_ky/2]
-  _enters:
-    - what: rectangle
-      where: [[key, enter]]
-      size: [plate_ky/2, plate_kx/2]
-  _spaces:
-    - what: rectangle
-      where: [[key, space]]
       size: [plate_kx/2, plate_ky/2]
 
   _outline:
@@ -147,10 +136,7 @@ outlines:
     - name: _outline
     - operation: subtract
       name: _keys
-    - operation: subtract
-      name: _enters
-    - operation: subtract
-      name: _spaces
+
 
   bottom:
     - name: pcb_outline
