@@ -18,7 +18,7 @@ points:
     matrix:
       # Fix placement on KiCAD sheet.
       anchor:
-        shift: [35, -100]
+        shift: [100, -100]
       key.tags: key
       columns:
         pinky:
@@ -30,15 +30,15 @@ points:
         index:
           key.column_net: C3
         inner:
-          key.column_net: C5
+          key.column_net: C4
 
       rows:
         bottom:
-          row_net: R4
-        home:
-          row_net: R3
-        top:
           row_net: R2
+        home:
+          row_net: R1
+        top:
+          row_net: R0
       mirror: &mirror
         ref: matrix_inner_top
         distance: 6kx
@@ -51,14 +51,14 @@ points:
         shift: [0, -1ky]
       columns:
         one:
-          key.column_net: C0
-        two:
-          key.column_net: C1
-        three:
           key.column_net: C2
+        two:
+          key.column_net: C3
+        three:
+          key.column_net: C4
       rows:
         thumb_row:
-          row_net: R7
+          row_net: R3
 
       mirror: &thumb_mirror
         ref: matrix_inner_top
@@ -73,7 +73,7 @@ points:
     controller:
       anchor:
         ref: keeb_center
-        shift: [0, 0]
+        shift: [0, -16]
       key:
         name: mcu
         width: mcu_x
@@ -88,8 +88,6 @@ points:
         name: trackpad
         width: 65
         height: 39
-
-
 
 outlines:
   _keys:
@@ -123,12 +121,10 @@ outlines:
         - ref: matrix_pinky_bottom
           shift: [-0.75kx, -0.5ky]
 
-
   top:
     - name: pcb_outline
     - operation: subtract
       name: _keys
-
 
   bottom:
     - name: pcb_outline
@@ -142,9 +138,8 @@ pcbs:
       choc:
         what: choc
         where:
-          - /^matrix_.*/
+          - /matrix_.*/
           - /thumb_cluster_.*/
-          - /^spaces_.*/
         params:
           keycaps: true
           reverse: false
@@ -154,9 +149,8 @@ pcbs:
       diode:
         what: diode
         where:
-          - /^matrix_.*/
+          - /matrix_.*/
           - /thumb_cluster_.*/
-          - /^spaces_.*/
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
@@ -167,24 +161,24 @@ pcbs:
       # Controller Area
       promicro:
         what: promicro
-        params:
-          # Pin Assignments (Controller on top facing down)
-          # Right Side
-          P0: "DPD" # Display Data
-          P1: "DPC" # Display Clock
-          # GND
-          # GND
-          P2: "DPE" # Display CS (nice!view only) FIXME? ZPM default?
-          P3: "R1" # Row
-          P4: "R2" # Row
-          P5: "R3" # Row
-          P6: "R4" # Row
-          P7: "R5" # Row
-          P8: "R6" # Row
-          P9: "R7" # Row
+        params:  # Pin Assignments (Controller on top facing down)
 
-          # Left Side
-          RAW: "BAT_P" # Battery Pos
+          # Left side of MCU
+          P0: "R0" # Left Row
+          P1: "R1" # Left Row
+          # GND
+          # GND
+          P2: "SDA" # I2C
+          P3: "SCL" # I2C
+          P4: "R2" # Left Row
+          P5: "R3" # Left Row
+          P6: "R4" # Right Row
+          P7: "R5" # Right Row
+          P8: "R6" # Right Row
+          P9: "R7" # Right Row
+
+          # Right side of MCU
+          # RAW
           # GND       # Ground / Battery Neg
           # RST       # Reset pin
           # VCC       # External Power
@@ -193,9 +187,9 @@ pcbs:
           P19: "C2" # Column
           P18: "C3" # Column
           P15: "C4" # Column
-          P14: "C5" # Column
-          P16: "C6" # Column
-          P10: "F10" # Free
+          # P14:
+          # P16:
+          # P10:
 
         where:
           ref: mcu
@@ -207,5 +201,5 @@ pcbs:
           from: GND
           to: RST
         where:
-          ref: mcu
-          shift: [mcu_x, -mcu_y/2 - 8]
+          ref: keeb_center
+          shift: [0, -36]
