@@ -50,7 +50,7 @@ points:
         top:
           row_net: R0
           mirror.row_net: R4
-#      rotate: -15
+      rotate: -15
       mirror: &mirror
         ref: matrix_inner_top
         distance: 5kx
