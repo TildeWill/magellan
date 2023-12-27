@@ -99,7 +99,7 @@ points:
       key:
         name: trackpad
         width: 65
-        height: 39
+        height: 49
 
 outlines:
   _keys:
@@ -164,6 +164,7 @@ pcbs:
           - /matrix_.*/
           - /thumb_cluster_.*/
         params:
+          include_tht: false
           from: "{{colrow}}"
           to: "{{row_net}}"
           designator: "D"
