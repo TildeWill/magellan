@@ -1,3 +1,11 @@
+meta:
+  engine: 4.0.2
+  name: magellan
+  version: 0.1
+  author: TildeWill
+  url: https://github.com/TildeWill/magellan
+  tags: ["wired", "monoblock", "low-profile", "split", "trackpad"]
+
 units:
   kx: cx
   ky: cy
@@ -35,10 +43,13 @@ points:
       rows:
         bottom:
           row_net: R2
+          mirror.row_net: R6
         home:
           row_net: R1
+          mirror.row_net: R5
         top:
           row_net: R0
+          mirror.row_net: R4
       mirror: &mirror
         ref: matrix_inner_top
         distance: 6kx
@@ -59,6 +70,7 @@ points:
       rows:
         thumb_row:
           row_net: R3
+          mirror.row_net: R7
 
       mirror: &thumb_mirror
         ref: matrix_inner_top
@@ -162,7 +174,7 @@ pcbs:
       promicro:
         what: promicro
         params:  # Pin Assignments (Controller on top facing down)
-
+          orientation: "down"
           # Left side of MCU
           P0: "R0" # Left Row
           P1: "R1" # Left Row
@@ -179,7 +191,7 @@ pcbs:
 
           # Right side of MCU
           # RAW
-          # GND       # Ground / Battery Neg
+          # GND       # Ground
           # RST       # Reset pin
           # VCC       # External Power
           P21: "C0" # Column
