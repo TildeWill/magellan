@@ -18,12 +18,18 @@ module.exports = {
     }
 
     const front = `
-      (gr_text "${p.text}" ${p.at} (layer F.SilkS)
+      (gr_text "${p.text}" ${p.at} (layer F.Mask)
+        (effects (font (size 1 1) (thickness 0.15)))
+      )
+      (gr_text "${p.text}" ${p.at} (layer F.Cu)
         (effects (font (size 1 1) (thickness 0.15)))
       )
     `
     const back = `
-      (gr_text "${p.text}" ${p.at} (layer B.SilkS)
+      (gr_text "${p.text}" ${p.at} (layer B.Mask)
+        (effects (font (size ${p.h_size} ${p.v_size}) (thickness ${p.thickness})) ${justify})
+      )
+      (gr_text "${p.text}" ${p.at} (layer B.Cu)
         (effects (font (size ${p.h_size} ${p.v_size}) (thickness ${p.thickness})) ${justify})
       )
     `

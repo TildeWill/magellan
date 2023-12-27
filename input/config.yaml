@@ -113,25 +113,25 @@ outlines:
       fillet: 2
       points:
         - ref: matrix_pinky_top
-          shift: [-0.75kx, 0.5ky]
+          shift: [-0.75kx, 0.75ky]
         - ref: matrix_inner_top
-          shift: [0.75kx, 0.5ky]
+          shift: [0.75kx, 0.75ky]
         - ref: mirror_matrix_inner_top
-          shift: [0.75kx, 0.5ky]
+          shift: [0.75kx, 0.75ky]
         - ref: mirror_matrix_pinky_top
-          shift: [-0.75kx, 0.5ky ]
+          shift: [-0.75kx, 0.75ky ]
         - ref: mirror_matrix_pinky_bottom
-          shift: [-0.75kx, -0.5ky ]
+          shift: [-0.75kx, -0.75ky ]
         - ref: mirror_thumb_cluster_one_thumb_row
-          shift: [ -0.75kx, -0.5ky ]
+          shift: [ -0.75kx, -0.75ky ]
         - ref: mirror_thumb_cluster_three_thumb_row
-          shift: [ 0.75kx, -0.5ky ]
+          shift: [ 0.75kx, -0.75ky ]
         - ref: thumb_cluster_three_thumb_row
-          shift: [0.75kx, -0.5ky]
+          shift: [0.75kx, -0.75ky]
         - ref: thumb_cluster_one_thumb_row
-          shift: [-0.75kx, -0.5ky]
+          shift: [-0.75kx, -0.75ky]
         - ref: matrix_pinky_bottom
-          shift: [-0.75kx, -0.5ky]
+          shift: [-0.75kx, -0.75ky]
 
   top:
     - name: pcb_outline
@@ -153,7 +153,7 @@ pcbs:
           - /matrix_.*/
           - /thumb_cluster_.*/
         params:
-          keycaps: true
+          show_keycaps: true
           reverse: false
           hotswap: true
           from: "{{colrow}}"
@@ -216,3 +216,11 @@ pcbs:
         where:
           ref: keeb_center
           shift: [0, -36]
+      github:
+        what: text_metal
+        where:
+          ref: matrix_inner_top
+          shift: [25, 0]
+        params:
+          text: "github/com/TildeWill/magellan"
+          h_size: 2
