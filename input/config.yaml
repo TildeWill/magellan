@@ -50,15 +50,16 @@ points:
         top:
           row_net: R0
           mirror.row_net: R4
+#      rotate: -15
       mirror: &mirror
         ref: matrix_inner_top
-        distance: 6kx
+        distance: 5kx
 
     thumb_cluster:
       key:
         tags: key
       anchor:
-        ref: matrix_inner_bottom
+        ref: matrix_index_bottom
         shift: [0, -1ky]
       columns:
         one:
@@ -74,7 +75,7 @@ points:
 
       mirror: &thumb_mirror
         ref: matrix_inner_top
-        distance: 6kx
+        distance: 5kx
 
     keeb_center:
       anchor:
@@ -85,7 +86,7 @@ points:
     controller:
       anchor:
         ref: keeb_center
-        shift: [0, -16]
+        shift: [0, -9]
       key:
         name: mcu
         width: mcu_x
@@ -95,7 +96,7 @@ points:
     trackpad:
       anchor:
         ref: keeb_center
-        shift: [0, -15]
+        shift: [0, -16]
       key:
         name: trackpad
         width: 65
@@ -123,6 +124,8 @@ outlines:
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.75kx, -0.75ky ]
         - ref: mirror_thumb_cluster_one_thumb_row
+          shift: [ -0.75kx, 0.25ky ]
+        - ref: mirror_thumb_cluster_one_thumb_row
           shift: [ -0.75kx, -0.75ky ]
         - ref: mirror_thumb_cluster_three_thumb_row
           shift: [ 0.75kx, -0.75ky ]
@@ -130,6 +133,8 @@ outlines:
           shift: [0.75kx, -0.75ky]
         - ref: thumb_cluster_one_thumb_row
           shift: [-0.75kx, -0.75ky]
+        - ref: thumb_cluster_one_thumb_row
+          shift: [ -0.75kx, 0.25ky ]
         - ref: matrix_pinky_bottom
           shift: [-0.75kx, -0.75ky]
 
@@ -158,6 +163,7 @@ pcbs:
           hotswap: true
           from: "{{colrow}}"
           to: "{{column_net}}"
+
       diode:
         what: diode
         where:
@@ -171,6 +177,7 @@ pcbs:
         adjust:
           shift: [-1.4, -6]
           rotate: 180
+
       # Controller Area
       promicro:
         what: promicro
@@ -203,30 +210,30 @@ pcbs:
           # P14:
           # P16:
           # P10:
-
         where:
           ref: mcu
-          shift: [0, 0]
           rotate: -90
+
       reset:
         what: button
         params:
           from: GND
           to: RST
         where:
-          ref: keeb_center
-          shift: [0, -36]
+          ref.aggregate.parts: [thumb_cluster_three_thumb_row, mirror_thumb_cluster_three_thumb_row]
+          shift: [0, -4]
+
       trackpad:
         what: azoteq_trackpad
         params:
-
         where:
           ref: trackpad
+
       github:
         what: text_metal
         where:
-          ref: matrix_inner_top
-          shift: [25, 0]
+          ref: keeb_center
+          shift: [0, -40]
         params:
           text: "github/com/TildeWill/magellan"
           h_size: 2
