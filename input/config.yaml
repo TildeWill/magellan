@@ -216,6 +216,12 @@ pcbs:
         where:
           ref: keeb_center
           shift: [0, -36]
+      trackpad:
+        what: azoteq_trackpad
+        params:
+
+        where:
+          ref: trackpad
       github:
         what: text_metal
         where:
