@@ -175,7 +175,7 @@ pcbs:
       promicro:
         what: promicro
         params:  # Pin Assignments (Controller on top facing down)
-          orientation: "down"
+          orientation: "up"
           # Left side of MCU
           P0: "R0" # Left Row
           P1: "R1" # Left Row
