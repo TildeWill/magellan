@@ -36,7 +36,7 @@ Since this was my first time designing a keeb, I wanted to be able to iterate qu
 * Include a projector
   * small projectors still suck in daylight
 * Split keyboard
-  * I hate the TTRS cable on my desk, feels like wasted space, and wireless isn't an option (see above)
+  * I hate the TRRS cable on my desk, feels like wasted space, and wireless isn't an option (see above)
   * I couldn't figure how to have the trackpad and keep the halves equal; the [Eskarp](https://kbd.news/Eskarp-1867.html) is essentially what you'd get.
   
 
