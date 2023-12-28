@@ -43,14 +43,11 @@ points:
       rows:
         bottom:
           row_net: R2
-          mirror.row_net: R6
         home:
           row_net: R1
           mirror.row_net: R5
         top:
           row_net: R0
-          mirror.row_net: R4
-
 
     thumb_cluster:
       key:
@@ -68,8 +65,6 @@ points:
       rows:
         thumb_row:
           row_net: R3
-          mirror.row_net: R7
-
 
     keeb_center:
       anchor:
@@ -110,9 +105,9 @@ outlines:
         - ref: matrix_pinky_top
           shift: [ -0.75kx, 0.75ky ]
         - ref: matrix_inner_top
-          shift: [ 0.75kx, 0.75ky ]
+          shift: [ 2kx, 0.75ky ]
         - ref: thumb_cluster_three_thumb_row
-          shift: [ 0.75kx, -0.75ky ]
+          shift: [ 2kx, -0.75ky ]
         - ref: thumb_cluster_one_thumb_row
           shift: [ -0.75kx, -0.75ky ]
         - ref: thumb_cluster_one_thumb_row
@@ -134,7 +129,6 @@ outlines:
           shift: [ 6.75kx, -0.75ky ]
         - ref: thumb_cluster_three_thumb_row
           shift: [ 0.75kx, -0.75ky ]
-
 
 pcbs:
   wing_board:
@@ -167,6 +161,24 @@ pcbs:
         adjust:
           shift: [-1.4, -6]
           rotate: 180
+
+      ffc_connector:
+        what: ffc_connector
+        where:
+          ref: matrix_inner_home
+          shift: [1kx, 0]
+          rotate: 90
+        params:
+          P0: "R0"
+          P1: "R1"
+          P2: "R2"
+          P3: "R3"
+          P4: "C4"
+          P5: "C3"
+          P6: "C2"
+          P7: "C1"
+          P8: "C0"
+
   middle_board:
     outlines:
       middle:
