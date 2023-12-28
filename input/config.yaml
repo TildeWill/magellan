@@ -50,16 +50,13 @@ points:
         top:
           row_net: R0
           mirror.row_net: R4
-      rotate: -15
-      mirror: &mirror
-        ref: matrix_inner_top
-        distance: 5kx
+
 
     thumb_cluster:
       key:
         tags: key
       anchor:
-        ref: matrix_index_bottom
+        ref: matrix_middle_bottom
         shift: [0, -1ky]
       columns:
         one:
@@ -73,14 +70,11 @@ points:
           row_net: R3
           mirror.row_net: R7
 
-      mirror: &thumb_mirror
-        ref: matrix_inner_top
-        distance: 5kx
 
     keeb_center:
       anchor:
-        ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-        shift: [0, 0]
+        ref: matrix_inner_top
+        shift: [6kx, 0]
 
     #  Controller
     controller:
@@ -108,49 +102,45 @@ outlines:
       where: [[key, -enter, -space]]
       size: [kx/2, ky/2]
 
-  pcb_outline:
+  wing_outline:
     - what: polygon
       operation: stack
       fillet: 2
       points:
         - ref: matrix_pinky_top
-          shift: [-0.75kx, 0.75ky]
+          shift: [ -0.75kx, 0.75ky ]
         - ref: matrix_inner_top
-          shift: [0.75kx, 0.75ky]
-        - ref: mirror_matrix_inner_top
-          shift: [0.75kx, 0.75ky]
-        - ref: mirror_matrix_pinky_top
-          shift: [-0.75kx, 0.75ky ]
-        - ref: mirror_matrix_pinky_bottom
-          shift: [-0.75kx, -0.75ky ]
-        - ref: mirror_thumb_cluster_one_thumb_row
-          shift: [ -0.75kx, 0.25ky ]
-        - ref: mirror_thumb_cluster_one_thumb_row
-          shift: [ -0.75kx, -0.75ky ]
-        - ref: mirror_thumb_cluster_three_thumb_row
-          shift: [ 0.75kx, -0.75ky ]
+          shift: [ 0.75kx, 0.75ky ]
         - ref: thumb_cluster_three_thumb_row
-          shift: [0.75kx, -0.75ky]
+          shift: [ 0.75kx, -0.75ky ]
         - ref: thumb_cluster_one_thumb_row
-          shift: [-0.75kx, -0.75ky]
+          shift: [ -0.75kx, -0.75ky ]
         - ref: thumb_cluster_one_thumb_row
           shift: [ -0.75kx, 0.25ky ]
         - ref: matrix_pinky_bottom
-          shift: [-0.75kx, -0.75ky]
+          shift: [ -0.75kx, -0.75ky ]
 
-  top:
-    - name: pcb_outline
-    - operation: subtract
-      name: _keys
 
-  bottom:
-    - name: pcb_outline
+  middle_outline:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: matrix_inner_top
+          shift: [ 0.75kx, 0.75ky ]
+        - ref: matrix_inner_top
+          shift: [ 6.75kx, 0.75ky ]
+        - ref: thumb_cluster_three_thumb_row
+          shift: [ 6.75kx, -0.75ky ]
+        - ref: thumb_cluster_three_thumb_row
+          shift: [ 0.75kx, -0.75ky ]
+
 
 pcbs:
-  board:
+  wing_board:
     outlines:
-      left:
-        outline: pcb_outline
+      wing:
+        outline: wing_outline
     footprints:
       choc:
         what: choc
@@ -159,7 +149,7 @@ pcbs:
           - /thumb_cluster_.*/
         params:
           show_keycaps: true
-          reverse: false
+          reverse: true
           hotswap: true
           from: "{{colrow}}"
           to: "{{column_net}}"
@@ -177,7 +167,11 @@ pcbs:
         adjust:
           shift: [-1.4, -6]
           rotate: 180
-
+  middle_board:
+    outlines:
+      middle:
+        outline: middle_outline
+    footprints:
       # Controller Area
       promicro:
         what: promicro
@@ -220,8 +214,8 @@ pcbs:
           from: GND
           to: RST
         where:
-          ref.aggregate.parts: [thumb_cluster_three_thumb_row, mirror_thumb_cluster_three_thumb_row]
-          shift: [0, -4]
+          ref: keeb_center
+          shift: [0, -40]
 
       trackpad:
         what: azoteq_trackpad

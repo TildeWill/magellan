@@ -4,13 +4,13 @@
 .DEFAULT: all
 
 container_cmd ?= docker
-container_args ?= -w /board -v $(shell pwd):/board --rm
+container_args ?= -w /wing_board -v $(shell pwd):/wing_board --rm
 
 setup:
 	npm install
 
 # outputs from
-output/pcbs/board.kicad_pcb &: input/config.yaml
+output/pcbs/wing_board.kicad_pcb output/pcbs/middle_board.kicad_pcb &: input/config.yaml
 	npm run gen
 
 output/pcbs/%.dsn: output/pcbs/%.kicad_pcb
@@ -32,6 +32,16 @@ output/routed_pcbs/%-drc/: output/routed_pcbs/%.kicad_pcb
 	mkdir -p $@
 	${container_cmd} run ${container_args} soundmonster/kicad-automation-scripts:latest /usr/lib/python2.7/dist-packages/kicad-automation/pcbnew_automation/run_drc.py  $< $@
 
+output/routed_pcbs/%-left.png: output/routed_pcbs/%.kicad_pcb
+	mkdir -p $(shell dirname $@)
+	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 pcbdraw --style builtin:oshpark-afterdark.json $< $@
+	cp $@ images/
+
+output/routed_pcbs/%-right.png: output/routed_pcbs/%.kicad_pcb
+	mkdir -p $(shell dirname $@)
+	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 pcbdraw -b --style builtin:oshpark-afterdark.json $< $@
+	cp $@ images/
+
 output/routed_pcbs/%-front.png: output/routed_pcbs/%.kicad_pcb
 	mkdir -p $(shell dirname $@)
 	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 pcbdraw --style builtin:oshpark-afterdark.json $< $@
@@ -41,6 +51,14 @@ output/routed_pcbs/%-back.png: output/routed_pcbs/%.kicad_pcb
 	mkdir -p $(shell dirname $@)
 	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 pcbdraw -b --style builtin:oshpark-afterdark.json $< $@
 	cp $@ images/
+
+output/pcbs/%-left.png: output/pcbs/%.kicad_pcb
+	mkdir -p $(shell dirname $@)
+	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 pcbdraw --style builtin:oshpark-afterdark.json $< $@
+
+output/pcbs/%-right.png: output/pcbs/%.kicad_pcb
+	mkdir -p $(shell dirname $@)
+	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 pcbdraw -b --style builtin:oshpark-afterdark.json $< $@
 
 output/pcbs/%-front.png: output/pcbs/%.kicad_pcb
 	mkdir -p $(shell dirname $@)
@@ -58,11 +76,16 @@ clean:
 	rm -rf output
 
 all: \
-	output/routed_pcbs/board-front.png \
-	output/routed_pcbs/board-back.png \
-	output/gerbers/board/gerbers.zip \
+	output/routed_pcbs/wing_board-left.png \
+	output/routed_pcbs/wing_board-right.png \
+	output/routed_pcbs/middle_board-front.png \
+  output/routed_pcbs/middle_board-back.png \
+  output/gerbers/wing_board/gerbers.zip \
+	output/gerbers/middle_board/gerbers.zip \
 
 preview: \
-	output/pcbs/board-front.png \
-	output/pcbs/board-back.png \
+	output/pcbs/wing_board-left.png \
+	output/pcbs/wing_board-right.png \
+	output/pcbs/middle_board-front.png \
+  output/pcbs/middle_board-back.png \
 
