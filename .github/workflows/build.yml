@@ -21,26 +21,26 @@ jobs:
         run: npm install
       - name: Generate unrouted PCBs
         run: npm run gen
-      - name: Export DSN 
+      - name: Export DSN
         uses: ./.github/actions/export-dsn
         with:
-          boards: left right
+          boards: wing_board middle_board
       - name: Autoroute PCB
         uses: ./.github/actions/autoroute
         with:
-          boards: left right
+          boards: wing_board middle_board
       - name: Import SES
         uses: ./.github/actions/import-ses
         with:
-          boards: left right
+          boards: wing_board middle_board
       - name: DRC check
         uses: ./.github/actions/run-drc
         with:
-          boards: left right
+          boards: wing_board middle_board
       - name: Export Gerbers
         uses: ./.github/actions/export-gerbers
         with:
-          boards: left right
+          boards: wing_board middle_board
       - name: Persist output
         uses: actions/upload-artifact@v3
         with:
