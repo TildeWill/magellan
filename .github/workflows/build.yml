@@ -19,24 +19,24 @@ jobs:
       - name: Export DSN for main PCB
         uses: ./.github/actions/export-dsn
         with:
-          pcb_file: output/pcbs/board.kicad_pcb
-          dsn_file: output/pcbs/board.dsn
+          pcb_file: output/pcbs/wing_board.kicad_pcb
+          dsn_file: output/pcbs/wing_board.dsn
       - name: Autoroute main PCB
         uses: ./.github/actions/autoroute
         with:
-          dsn_file: output/pcbs/board.dsn
-          ses_file: output/pcbs/board.ses
+          dsn_file: output/pcbs/wing_board.dsn
+          ses_file: output/pcbs/wing_board.ses
       - name: Import SES into main PCB
         uses: ./.github/actions/import-ses
         with:
-          pcb_input_file: output/pcbs/board.kicad_pcb
-          pcb_output_file: output/pcbs/board_routed.kicad_pcb
+          pcb_input_file: output/pcbs/wing_board.kicad_pcb
+          pcb_output_file: output/pcbs/wing_board_routed.kicad_pcb
           ses_file: output/pcbs/board.ses
       - name: Export Gerbers for main PCB
         uses: ./.github/actions/export-gerbers
         with:
-          pcb_file: output/pcbs/board.kicad_pcb
-          gerbers_dir: output/gerbers/board
+          pcb_file: output/pcbs/wing_board.kicad_pcb
+          gerbers_dir: output/gerbers/wing_board
       - name: Persist output
         uses: actions/upload-artifact@v2
         with:
