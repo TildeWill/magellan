@@ -1,11 +1,8 @@
 name: 'Export DSN'
 description: 'Export Specctra DSN from a Kicad PCB'
 inputs:
-  pcb_file:
-    description: 'Kicad input file'
-    required: true
-  dsn_file:
-    description: 'Specctra DSN output file'
+  boards:
+    description: 'Board names'
     required: true
 runs:
   using: 'docker'
@@ -17,4 +14,8 @@ runs:
     - |
       mkdir -p $HOME/.config/kicad ;
       cp /root/.config/kicad/* $HOME/.config/kicad ;
-      /usr/lib/python2.7/dist-packages/kicad-automation/pcbnew_automation/export_dsn.py ${{ inputs.pcb_file }} ${{ inputs.dsn_file }}
+      for board in ${{ inputs.boards }};
+      do
+        echo Processing $board
+        /usr/lib/python2.7/dist-packages/kicad-automation/pcbnew_automation/export_dsn.py $GITHUB_WORKSPACE/output/pcbs/${board}.kicad_pcb $GITHUB_WORKSPACE/output/pcbs/${board}.dsn
+      done

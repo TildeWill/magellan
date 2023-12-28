@@ -7,38 +7,42 @@ jobs:
     name: Generate
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+      - name: Docker Cache
+        uses: ScribeMD/docker-cache@0.3.3
+        with:
+          key: docker-${{ runner.os }}
       - name: Use Node.js 17
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 17.x
+          cache: 'npm'
       - name: Install dependencies
         run: npm install
       - name: Generate unrouted PCBs
         run: npm run gen
-      - name: Export DSN for main PCB
+      - name: Export DSN 
         uses: ./.github/actions/export-dsn
         with:
-          pcb_file: output/pcbs/wing_board.kicad_pcb
-          dsn_file: output/pcbs/wing_board.dsn
-      - name: Autoroute main PCB
+          boards: left right
+      - name: Autoroute PCB
         uses: ./.github/actions/autoroute
         with:
-          dsn_file: output/pcbs/wing_board.dsn
-          ses_file: output/pcbs/wing_board.ses
-      - name: Import SES into main PCB
+          boards: left right
+      - name: Import SES
         uses: ./.github/actions/import-ses
         with:
-          pcb_input_file: output/pcbs/wing_board.kicad_pcb
-          pcb_output_file: output/pcbs/wing_board_routed.kicad_pcb
-          ses_file: output/pcbs/board.ses
-      - name: Export Gerbers for main PCB
+          boards: left right
+      - name: DRC check
+        uses: ./.github/actions/run-drc
+        with:
+          boards: left right
+      - name: Export Gerbers
         uses: ./.github/actions/export-gerbers
         with:
-          pcb_file: output/pcbs/wing_board.kicad_pcb
-          gerbers_dir: output/gerbers/wing_board
+          boards: left right
       - name: Persist output
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: routed-pcbs-and-gerbers
           path: output
