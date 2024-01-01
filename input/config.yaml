@@ -42,11 +42,11 @@ points:
 
       rows:
         bottom:
-          row_net: R0
+#          row_net: R0
         home:
-          row_net: R1
+#          row_net: R1
         top:
-          row_net: R2
+#          row_net: R2
 
     thumb_cluster:
       key:
@@ -63,7 +63,7 @@ points:
           key.column_net: C4
       rows:
         thumb_row:
-          row_net: R3
+#          row_net: R3
 
     keeb_center:
       anchor:
@@ -147,34 +147,34 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}"
 
-      diode:
-        what: diode
-        where:
-          - /matrix_.*/
-          - /thumb_cluster_.*/
-        params:
-          include_tht: false
-          side: back
-          from: "{{colrow}}"
-          to: "{{row_net}}"
-          designator: "D"
-        adjust:
-          shift: [-1.4, -6]
-          rotate: 180
+#      diode:
+#        what: diode
+#        where:
+#          - /matrix_.*/
+#          - /thumb_cluster_.*/
+#        params:
+#          include_tht: false
+#          side: back
+#          from: "{{colrow}}"
+#          to: "{{row_net}}"
+#          designator: "D"
+#        adjust:
+#          shift: [-1.4, -6]
+#          rotate: 180
 
       front_ffc_connector:
         what: ffc_connector
         where:
           ref: matrix_inner_home
-          shift: [1kx, 0]
+          shift: [20, -36]
           rotate: 90
         params:
-          side: "F"
-          P8: "C4"
-          P7: "C3"
-          P6: "C2"
-          P5: "C1"
-          P4: "C0"
+          side: "B"
+          P0: "C0"
+          P1: "C1"
+          P2: "C2"
+          P3: "C3"
+          P4: "C4"
 
 #      back_ffc_connector:
 #        what: ffc_connector
