@@ -163,17 +163,27 @@ pcbs:
           shift: [-1.4, -6]
           rotate: 180
 
-      ffc_connector:
+      front_ffc_connector:
         what: ffc_connector
         where:
           ref: matrix_inner_home
           shift: [1kx, 0]
           rotate: 90
         params:
+          side: "F"
           P0: "R0"
           P1: "R1"
           P2: "R2"
           P3: "R3"
+
+      back_ffc_connector:
+        what: ffc_connector
+        where:
+          ref: matrix_inner_home
+          shift: [1kx, 0]
+          rotate: 90
+        params:
+          side: "B"
           P4: "C4"
           P5: "C3"
           P6: "C2"
