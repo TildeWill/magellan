@@ -42,12 +42,11 @@ points:
 
       rows:
         bottom:
-          row_net: R2
+          row_net: R0
         home:
           row_net: R1
-          mirror.row_net: R5
         top:
-          row_net: R0
+          row_net: R2
 
     thumb_cluster:
       key:
@@ -110,8 +109,8 @@ outlines:
           shift: [ 2kx, -0.75ky ]
         - ref: thumb_cluster_one_thumb_row
           shift: [ -0.75kx, -0.75ky ]
-        - ref: thumb_cluster_one_thumb_row
-          shift: [ -0.75kx, 0.25ky ]
+#        - ref: thumb_cluster_one_thumb_row
+#          shift: [ -0.75kx, 0.25ky ]
         - ref: matrix_pinky_bottom
           shift: [ -0.75kx, -0.75ky ]
 
@@ -171,24 +170,23 @@ pcbs:
           rotate: 90
         params:
           side: "F"
-          P0: "R0"
-          P1: "R1"
-          P2: "R2"
-          P3: "R3"
-
-      back_ffc_connector:
-        what: ffc_connector
-        where:
-          ref: matrix_inner_home
-          shift: [1kx, 0]
-          rotate: 90
-        params:
-          side: "B"
-          P4: "C4"
-          P5: "C3"
+          P8: "C4"
+          P7: "C3"
           P6: "C2"
-          P7: "C1"
-          P8: "C0"
+          P5: "C1"
+          P4: "C0"
+
+#      back_ffc_connector:
+#        what: ffc_connector
+#        where:
+#          ref: matrix_inner_home
+#          shift: [1kx, 0]
+#          rotate: 90
+#        params:
+#          side: "B"
+#          P1: "R0"
+#          P2: "R1"
+#          P3: "R2"
 
   middle_board:
     outlines:
