@@ -143,10 +143,10 @@ pcbs:
           - /thumb_cluster_.*/
         params:
           show_keycaps: true
-          reverse: true
+          reverse: false
           hotswap: true
-          from: "{{colrow}}"
-          to: "{{column_net}}"
+          from: "{{column_net}}"
+          to: "{{colrow}}"
 
       diode:
         what: diode
@@ -155,6 +155,7 @@ pcbs:
           - /thumb_cluster_.*/
         params:
           include_tht: false
+          side: back
           from: "{{colrow}}"
           to: "{{row_net}}"
           designator: "D"
