@@ -30,23 +30,23 @@ points:
       key.tags: key
       columns:
         pinky:
-          key.column_net: C0
+#          key.column_net: C0
         ring:
-          key.column_net: C1
+#          key.column_net: C1
         middle:
-          key.column_net: C2
+#          key.column_net: C2
         index:
-          key.column_net: C3
+#          key.column_net: C3
         inner:
-          key.column_net: C4
+#          key.column_net: C4
 
       rows:
         bottom:
-#          row_net: R0
+          row_net: R2
         home:
-#          row_net: R1
+          row_net: R1
         top:
-#          row_net: R2
+          row_net: R0
 
     thumb_cluster:
       key:
@@ -56,14 +56,14 @@ points:
         shift: [0, -1ky]
       columns:
         one:
-          key.column_net: C2
+#          key.column_net: C2
         two:
-          key.column_net: C3
+#          key.column_net: C3
         three:
-          key.column_net: C4
+#          key.column_net: C4
       rows:
         thumb_row:
-#          row_net: R3
+          row_net: R3
 
     keeb_center:
       anchor:
@@ -76,7 +76,7 @@ points:
         ref: keeb_center
         shift: [0, -9]
       key:
-        name: mcu
+        name: mcu_center
         width: mcu_x
         height: mcu_y
 
@@ -86,7 +86,7 @@ points:
         ref: keeb_center
         shift: [0, -16]
       key:
-        name: trackpad
+        name: trackpad_center
         width: 65
         height: 49
 
@@ -109,8 +109,8 @@ outlines:
           shift: [ 2kx, -0.75ky ]
         - ref: thumb_cluster_one_thumb_row
           shift: [ -0.75kx, -0.75ky ]
-#        - ref: thumb_cluster_one_thumb_row
-#          shift: [ -0.75kx, 0.25ky ]
+        - ref: thumb_cluster_one_thumb_row
+          shift: [ -0.75kx, 0.25ky ]
         - ref: matrix_pinky_bottom
           shift: [ -0.75kx, -0.75ky ]
 
@@ -147,22 +147,36 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}"
 
-#      diode:
-#        what: diode
-#        where:
-#          - /matrix_.*/
-#          - /thumb_cluster_.*/
-#        params:
-#          include_tht: false
-#          side: back
-#          from: "{{colrow}}"
-#          to: "{{row_net}}"
-#          designator: "D"
-#        adjust:
-#          shift: [-1.4, -6]
-#          rotate: 180
+      diode:
+        what: diode
+        where:
+          - /matrix_.*/
+          - /thumb_cluster_.*/
+        params:
+          include_tht: false
+          side: back
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          designator: "D"
+        adjust:
+          shift: [-1.4, -6]
+          rotate: 180
 
-      front_ffc_connector:
+      ffc_connector1:
+        what: ffc_connector
+        where:
+          ref: matrix_inner_home
+          shift: [20, -36]
+          rotate: 90
+        params:
+          side: "F"
+          P0: "C0"
+          P1: "C1"
+          P2: "C2"
+          P3: "C3"
+          P4: "C4"
+
+      ffc_connector2:
         what: ffc_connector
         where:
           ref: matrix_inner_home
@@ -170,23 +184,10 @@ pcbs:
           rotate: 90
         params:
           side: "B"
-          P0: "C0"
-          P1: "C1"
-          P2: "C2"
-          P3: "C3"
-          P4: "C4"
-
-#      back_ffc_connector:
-#        what: ffc_connector
-#        where:
-#          ref: matrix_inner_home
-#          shift: [1kx, 0]
-#          rotate: 90
-#        params:
-#          side: "B"
-#          P1: "R0"
-#          P2: "R1"
-#          P3: "R2"
+          P5: "R3"
+          P6: "R2"
+          P7: "R1"
+          P8: "R0"
 
   middle_board:
     outlines:
@@ -226,7 +227,7 @@ pcbs:
           # P16:
           # P10:
         where:
-          ref: mcu
+          ref: mcu_center
           rotate: -90
 
       reset:
@@ -242,7 +243,7 @@ pcbs:
         what: azoteq_trackpad
         params:
         where:
-          ref: trackpad
+          ref: trackpad_center
 
       github:
         what: text_metal
