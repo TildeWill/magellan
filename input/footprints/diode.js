@@ -71,6 +71,6 @@ module.exports = {
         )
         `
 
-    return footprint;
+        return footprint;
     }
 }

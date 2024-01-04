@@ -42,11 +42,11 @@ points:
 
       rows:
         bottom:
-          row_net: R2
+          row_net: FFC_R2
         home:
-          row_net: R1
+          row_net: FFC_R1
         top:
-          row_net: R0
+          row_net: FFC_R0
 
     thumb_cluster:
       key:
@@ -63,7 +63,32 @@ points:
 #          key.column_net: C4
       rows:
         thumb_row:
-          row_net: R3
+          row_net: FFC_R3
+
+    ffc_center:
+      anchor:
+        ref: thumb_cluster_three_thumb_row
+        shift: [20, 0]
+
+    vias:
+      key:
+        tags: via
+        padding: 1.2
+        spread: 1.2
+      anchor:
+        ref: ffc_center
+        shift: [-4, -6]
+      columns:
+        one:
+      rows:
+        p0:
+          row_net: FFC_R3
+        p1:
+          row_net: FFC_R2
+        p2:
+          row_net: FFC_R1
+        p3:
+          row_net: FFC_R0
 
     keeb_center:
       anchor:
@@ -165,29 +190,21 @@ pcbs:
       ffc_connector1:
         what: ffc_connector
         where:
-          ref: matrix_inner_home
-          shift: [20, -36]
+          ref: ffc_center
           rotate: 90
         params:
           side: "F"
-          P0: "C0"
-          P1: "C1"
-          P2: "C2"
-          P3: "C3"
-          P4: "C4"
+          P0: "FFC_R3"
+          P1: "FFC_R2"
+          P2: "FFC_R1"
+          P3: "FFC_R0"
 
-      ffc_connector2:
-        what: ffc_connector
+      ffc_vias:
+        what: via
         where:
-          ref: matrix_inner_home
-          shift: [20, -36]
-          rotate: 90
+          - /vias_.*/
         params:
-          side: "B"
-          P5: "R3"
-          P6: "R2"
-          P7: "R1"
-          P8: "R0"
+          net: "{{row_net}}"
 
   middle_board:
     outlines:
