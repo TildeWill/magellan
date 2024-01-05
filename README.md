@@ -13,6 +13,7 @@ Since this was my first time designing a keeb, I wanted to be able to iterate qu
 
 ### Front
 ![front](images/combo_board-front.png)
+### Back
 ![back](images/combo_board-back.png)
 
 
