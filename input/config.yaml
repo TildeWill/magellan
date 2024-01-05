@@ -22,6 +22,8 @@ units:
   middle_outline_width: trackpad_width
   tab_height: 6
 
+  mirror_width: middle_outline_width + 40
+
 points:
   key:
     padding: 1ky
@@ -36,31 +38,45 @@ points:
       key.tags: key
       columns:
         pinky:
-          key.column_net: FFC_C0
+          key:
+            column_net: FFC_C0
+            mirror.column_net: MFFC_C0
           rows.thumb.skip: true
         ring:
-          key.column_net: FFC_C1
+          key:
+            column_net: FFC_C1
+            mirror.column_net: MFFC_C1
           rows.thumb.skip: true
         middle:
-          key.column_net: FFC_C2
+          key:
+            column_net: FFC_C2
+            mirror.column_net: MFFC_C2
         index:
-          key.column_net: FFC_C3
+          key:
+            column_net: FFC_C3
+            mirror.column_net: MFFC_C03
         inner:
-          key.column_net: FFC_C4
+          key:
+            column_net: FFC_C4
+            mirror.column_net: MFFC_C4
 
       rows:
         thumb:
           row_net: FFC_R3
+          mirror.row_net: MFFC_R3
         bottom:
           row_net: FFC_R2
+          mirror.row_net: MFFC_R2
         home:
           row_net: FFC_R1
+          mirror.row_net: MFFC_R1
         top:
           row_net: FFC_R0
+          mirror.row_net: MFFC_R0
 
       mirror: &mirror
         ref: matrix_inner_top
-        distance: middle_outline_width + 40
+        distance: mirror_width
 
 
 
@@ -68,7 +84,9 @@ points:
       anchor:
         ref: matrix_inner_thumb
         shift: [12, 1]
-
+      mirror: &mirror
+        ref: matrix_inner_top
+        distance: mirror_width
     vias:
       key:
         tags: via
@@ -82,12 +100,19 @@ points:
       rows:
         p0:
           row_net: FFC_R3
+          mirror.row_net: MFFC_R3
         p1:
           row_net: FFC_R2
+          mirror.row_net: MFFC_R2
         p2:
           row_net: FFC_R1
+          mirror.row_net: MFFC_R1
         p3:
           row_net: FFC_R0
+          mirror.row_net: MFFC_R0
+      mirror: &mirror
+        ref: matrix_inner_top
+        distance: mirror_width
 
     keeb_center:
       anchor:
@@ -133,7 +158,7 @@ outlines:
         shift: [0, -10]
       size: [2middle_outline_width, tab_height]
 
-  left_wing_outline:
+  wing_outline:
     - what: polygon
       operation: stack
       fillet: 2
@@ -151,7 +176,7 @@ outlines:
         - ref: matrix_pinky_bottom
           shift: [ -0.5kx, -0.5ky ]
 
-  right_wing_outline:
+  mirror_wing_outline:
     - what: polygon
       operation: stack
       fillet: 2
@@ -176,9 +201,9 @@ outlines:
       size: [middle_outline_width, 4ky]
 
   combo:
-    - name: left_wing_outline
+    - name: wing_outline
     - operation: add
-      name: right_wing_outline
+      name: mirror_wing_outline
     - operation: add
       name: middle_outline
     - operation: add
@@ -195,7 +220,6 @@ pcbs:
         what: choc
         where:
           - /matrix_.*/
-          - /thumb_cluster_.*/
         params:
           show_keycaps: true
           reverse: false
@@ -218,7 +242,7 @@ pcbs:
           shift: [-3.4, -6]
           rotate: 180
 
-      ffc_connector_left:
+      ffc_connector:
         what: ffc_connector
         where:
           ref: ffc_center
@@ -234,6 +258,23 @@ pcbs:
           P6: "FFC_C2"
           P7: "FFC_C3"
           P8: "FFC_C4"
+
+      ffc_connector_mirror:
+        what: ffc_connector
+        where:
+          ref: mirror_ffc_center
+          rotate: 90
+        params:
+          side: "F"
+          P0: "MFFC_R3"
+          P1: "MFFC_R2"
+          P2: "MFFC_R1"
+          P3: "MFFC_R0"
+          P4: "MFFC_C0"
+          P5: "MFFC_C1"
+          P6: "MFFC_C2"
+          P7: "MFFC_C3"
+          P8: "MFFC_C4"
 
       ffc_vias:
         what: via
