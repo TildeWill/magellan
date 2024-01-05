@@ -78,8 +78,6 @@ points:
         ref: matrix_inner_top
         distance: mirror_width
 
-
-
     ffc_center:
       anchor:
         ref: matrix_inner_thumb
@@ -87,6 +85,7 @@ points:
       mirror: &mirror
         ref: matrix_inner_top
         distance: mirror_width
+
     vias:
       key:
         tags: via
@@ -122,7 +121,7 @@ points:
     controller:
       anchor:
         ref: keeb_center
-        shift: [0, -9]
+        shift: [0, 16]
       key:
         name: mcu_center
         width: mcu_x
@@ -132,7 +131,7 @@ points:
     trackpad:
       anchor:
         ref: keeb_center
-        shift: [0, -16]
+        shift: [0, 16]
       key:
         name: trackpad_center
         width: trackpad_width
@@ -242,7 +241,7 @@ pcbs:
           shift: [-3.4, -6]
           rotate: 180
 
-      ffc_connector:
+      wing_ffc_connector:
         what: ffc_connector
         where:
           ref: ffc_center
@@ -258,8 +257,9 @@ pcbs:
           P6: "FFC_C2"
           P7: "FFC_C3"
           P8: "FFC_C4"
+          P9: "wing_ffc_connector_null"
 
-      ffc_connector_mirror:
+      wing_ffc_connector_mirror:
         what: ffc_connector
         where:
           ref: mirror_ffc_center
@@ -275,6 +275,45 @@ pcbs:
           P6: "MFFC_C2"
           P7: "MFFC_C3"
           P8: "MFFC_C4"
+          P9: "wing_ffc_connector_mirror_null"
+
+      middle_ffc_connector:
+        what: ffc_connector
+        where:
+          ref: keeb_center
+          shift: [-22, -22]
+          rotate: -90
+        params:
+          side: "F"
+          P0: "R3"
+          P1: "R2"
+          P2: "R1"
+          P3: "R0"
+          P4: "C0"
+          P5: "C1"
+          P6: "C2"
+          P7: "C3"
+          P8: "C4"
+          P9: "middle_ffc_connector_null"
+
+      middle_ffc_connector_mirror:
+        what: ffc_connector
+        where:
+          ref: keeb_center
+          shift: [22, -22]
+          rotate: 90
+        params:
+          side: "F"
+          P0: "R7"
+          P1: "R6"
+          P2: "R5"
+          P3: "R4"
+          P4: "C0"
+          P5: "C1"
+          P6: "C2"
+          P7: "C3"
+          P8: "C4"
+          P9: "middle_ffc_connector_mirror_null"
 
       ffc_vias:
         what: via
@@ -327,7 +366,7 @@ pcbs:
           to: RST
         where:
           ref: keeb_center
-          shift: [0, -40]
+          shift: [0, -14]
 
       trackpad:
         what: azoteq_trackpad
@@ -339,7 +378,7 @@ pcbs:
         what: text_metal
         where:
           ref: keeb_center
-          shift: [0, -40]
+          shift: [0, -10]
         params:
           text: "github/com/TildeWill/magellan"
           h_size: 2
