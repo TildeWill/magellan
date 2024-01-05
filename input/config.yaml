@@ -18,7 +18,7 @@ units:
   mcu_x: 17.78 + mcu_spacing_x
   mcu_y: 30.48 + mcu_overhang_y
 
-  trackpad_width: 65
+  trackpad_width: 67
   middle_outline_width: trackpad_width
   tab_height: 6
 
@@ -78,10 +78,17 @@ points:
         ref: matrix_inner_top
         distance: mirror_width
 
-    ffc_center:
+    ffc_centers:
       anchor:
         ref: matrix_inner_thumb
         shift: [12, 1]
+      columns:
+        wing:
+        middle:
+          key:
+            spread: 12
+      rows:
+        ffcs:
       mirror: &mirror
         ref: matrix_inner_top
         distance: mirror_width
@@ -92,7 +99,7 @@ points:
         padding: 1
         spread: 1
       anchor:
-        ref: ffc_center
+        ref: ffc_centers_wing_ffcs
         shift: [-4, -6]
       columns:
         one:
@@ -128,14 +135,11 @@ points:
         height: mcu_y
 
     #  Azoteq TPS65 Trackpad
-    trackpad:
+    trackpad_center:
       anchor:
         ref: keeb_center
         shift: [0, 16]
-      key:
-        name: trackpad_center
-        width: trackpad_width
-        height: 49
+
 
 outlines:
   _keys:
@@ -244,7 +248,7 @@ pcbs:
       wing_ffc_connector:
         what: ffc_connector
         where:
-          ref: ffc_center
+          ref: ffc_centers_wing_ffcs
           rotate: 90
         params:
           side: "F"
@@ -262,7 +266,7 @@ pcbs:
       wing_ffc_connector_mirror:
         what: ffc_connector
         where:
-          ref: mirror_ffc_center
+          ref: mirror_ffc_centers_wing_ffcs
           rotate: 90
         params:
           side: "F"
@@ -280,8 +284,7 @@ pcbs:
       middle_ffc_connector:
         what: ffc_connector
         where:
-          ref: keeb_center
-          shift: [-22, -22]
+          ref: ffc_centers_middle_ffcs
           rotate: -90
         params:
           side: "F"
@@ -299,9 +302,8 @@ pcbs:
       middle_ffc_connector_mirror:
         what: ffc_connector
         where:
-          ref: keeb_center
-          shift: [22, -22]
-          rotate: 90
+          ref: mirror_ffc_centers_middle_ffcs
+          rotate: -90
         params:
           side: "F"
           P0: "R7"
