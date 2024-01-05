@@ -18,6 +18,10 @@ units:
   mcu_x: 17.78 + mcu_spacing_x
   mcu_y: 30.48 + mcu_overhang_y
 
+  trackpad_width: 65
+  middle_outline_width: trackpad_width
+  tab_height: 6
+
 points:
   key:
     padding: 1ky
@@ -56,7 +60,9 @@ points:
 
       mirror: &mirror
         ref: matrix_inner_top
-        distance: 5kx
+        distance: middle_outline_width + 40
+
+
 
     ffc_center:
       anchor:
@@ -104,7 +110,7 @@ points:
         shift: [0, -16]
       key:
         name: trackpad_center
-        width: 65
+        width: trackpad_width
         height: 49
 
 outlines:
@@ -112,6 +118,20 @@ outlines:
     - what: rectangle
       where: [[key, -enter, -space]]
       size: [kx/2, ky/2]
+
+  tab_top:
+    - what: rectangle
+      where:
+        ref: keeb_center
+        shift: [0, 10]
+      size: [2middle_outline_width, tab_height]
+
+  tab_bottom:
+    - what: rectangle
+      where:
+        ref: keeb_center
+        shift: [0, -10]
+      size: [2middle_outline_width, tab_height]
 
   left_wing_outline:
     - what: polygon
@@ -130,6 +150,7 @@ outlines:
           shift: [ -0.5kx, 0.5ky ]
         - ref: matrix_pinky_bottom
           shift: [ -0.5kx, -0.5ky ]
+
   right_wing_outline:
     - what: polygon
       operation: stack
@@ -152,7 +173,7 @@ outlines:
     - what: rectangle
       where: keeb_center
       fillet: 2
-      size: [4kx, 4ky]
+      size: [middle_outline_width, 4ky]
 
   combo:
     - name: left_wing_outline
@@ -160,6 +181,10 @@ outlines:
       name: right_wing_outline
     - operation: add
       name: middle_outline
+    - operation: add
+      name: tab_top
+    - operation: add
+      name: tab_bottom
 pcbs:
   combo_board:
     outlines:
