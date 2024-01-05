@@ -20,8 +20,8 @@ module.exports = {
         ${p.at /* parametric position */}
         (attr virtual)
         
-        (fp_text reference "${p.ref}" (at 0.665 5 0) (layer ${p.side}.SilkS) (effects (font (size 1.0 1.0) (thickness 0.15))))
-        (fp_text value 686110183522 (at 5.17 3.435 0) (layer ${p.side}.Fab) (effects (font (size 1.0 1.0) (thickness 0.15))))
+        (fp_text reference "${p.ref}" (at 0.665 5 0) (layer ${p.side}.SilkS) ${p.ref_hide} (effects (font (size 1.0 1.0) (thickness 0.15))))
+        (fp_text value 686110183522 (at 5.17 3.435 0) (layer ${p.side}.Fab) ${p.ref_hide} (effects (font (size 1.0 1.0) (thickness 0.15))))
         (pad Z1 smd rect (at -7.275 0.0) (size 1.65 1.3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) (solder_mask_margin 0.102))
         (pad Z2 smd rect (at 7.275 0.0) (size 1.65 1.3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) (solder_mask_margin 0.102))
         

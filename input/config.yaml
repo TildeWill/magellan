@@ -5,6 +5,8 @@ meta:
   author: TildeWill
   url: https://github.com/TildeWill/magellan
   tags: ["wired", "monoblock", "low-profile", "split", "trackpad"]
+  notes:
+    pcb_thickness: "1.2 for a strong hot swap connection"
 
 units:
   kx: cx
@@ -30,15 +32,15 @@ points:
       key.tags: key
       columns:
         pinky:
-#          key.column_net: C0
+          key.column_net: FFC_C0
         ring:
-#          key.column_net: C1
+          key.column_net: FFC_C1
         middle:
-#          key.column_net: C2
+          key.column_net: FFC_C2
         index:
-#          key.column_net: C3
+          key.column_net: FFC_C3
         inner:
-#          key.column_net: C4
+          key.column_net: FFC_C4
 
       rows:
         bottom:
@@ -56,11 +58,11 @@ points:
         shift: [0, -1ky]
       columns:
         one:
-#          key.column_net: C2
+          key.column_net: FFC_C2
         two:
-#          key.column_net: C3
+          key.column_net: FFC_C3
         three:
-#          key.column_net: C4
+          key.column_net: FFC_C4
       rows:
         thumb_row:
           row_net: FFC_R3
@@ -68,13 +70,13 @@ points:
     ffc_center:
       anchor:
         ref: thumb_cluster_three_thumb_row
-        shift: [20, 0]
+        shift: [12, 1]
 
     vias:
       key:
         tags: via
-        padding: 1.2
-        spread: 1.2
+        padding: 1
+        spread: 1
       anchor:
         ref: ffc_center
         shift: [-4, -6]
@@ -127,17 +129,17 @@ outlines:
       fillet: 2
       points:
         - ref: matrix_pinky_top
-          shift: [ -0.75kx, 0.75ky ]
+          shift: [ -0.5kx, 0.5ky ]
         - ref: matrix_inner_top
-          shift: [ 2kx, 0.75ky ]
+          shift: [ 0.5kx + 8, 0.5ky ]
         - ref: thumb_cluster_three_thumb_row
-          shift: [ 2kx, -0.75ky ]
+          shift: [ 0.5kx + 8, -0.5ky ]
         - ref: thumb_cluster_one_thumb_row
-          shift: [ -0.75kx, -0.75ky ]
+          shift: [ -0.5kx, -0.5ky ]
         - ref: thumb_cluster_one_thumb_row
-          shift: [ -0.75kx, 0.25ky ]
+          shift: [ -0.5kx, 0.5ky ]
         - ref: matrix_pinky_bottom
-          shift: [ -0.75kx, -0.75ky ]
+          shift: [ -0.5kx, -0.5ky ]
 
 
   middle_outline:
@@ -169,6 +171,7 @@ pcbs:
           show_keycaps: true
           reverse: false
           hotswap: true
+          solder: false
           from: "{{column_net}}"
           to: "{{colrow}}"
 
@@ -184,7 +187,7 @@ pcbs:
           to: "{{row_net}}"
           designator: "D"
         adjust:
-          shift: [-1.4, -6]
+          shift: [-3.4, -6]
           rotate: 180
 
       ffc_connector1:
@@ -198,6 +201,11 @@ pcbs:
           P1: "FFC_R2"
           P2: "FFC_R1"
           P3: "FFC_R0"
+          P4: "FFC_C0"
+          P5: "FFC_C1"
+          P6: "FFC_C2"
+          P7: "FFC_C3"
+          P8: "FFC_C4"
 
       ffc_vias:
         what: via
