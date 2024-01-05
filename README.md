@@ -12,9 +12,8 @@ Since this was my first time designing a keeb, I wanted to be able to iterate qu
 * Lastly, the build system uses [KiKit](https://github.com/yaqwsx/KiKit) to render PCB previews (see pictures below) and production-ready **Gerber files**
 
 ### Front
-![front left wing](images/wing_board-front.png)
-![front middle](images/middle_board-front.png)
-![front right wing](images/wing_board-back.png)
+![front](images/combo_board-front.png)
+![back](images/combo_board-back.png)
 
 
 ## Features and Design Considerations

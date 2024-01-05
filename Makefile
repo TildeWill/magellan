@@ -4,13 +4,13 @@
 .DEFAULT: all
 
 container_cmd ?= docker
-container_args ?= -w /wing_board -v $(shell pwd):/wing_board --rm
+container_args ?= -w /combo_board -v $(shell pwd):/combo_board --rm
 
 setup:
 	npm install
 
 # outputs from
-output/pcbs/wing_board.kicad_pcb output/pcbs/middle_board.kicad_pcb &: input/config.yaml
+output/pcbs/combo_board.kicad_pcb &: input/config.yaml
 	npm run gen
 
 output/pcbs/%.dsn: output/pcbs/%.kicad_pcb
@@ -58,16 +58,13 @@ clean:
 	rm -rf output
 
 all: \
-	output/routed_pcbs/wing_board-front.png \
-	output/routed_pcbs/wing_board-back.png \
-	output/routed_pcbs/middle_board-front.png \
-  output/routed_pcbs/middle_board-back.png \
-  output/gerbers/wing_board/gerbers.zip \
-	output/gerbers/middle_board/gerbers.zip \
+	output/routed_pcbs/combo_board-front.png \
+	output/routed_pcbs/combo_board-back.png \
+  output/gerbers/combo_board/gerbers.zip \
+
 
 preview: \
-	output/pcbs/wing_board-front.png \
-	output/pcbs/wing_board-back.png \
-	output/pcbs/middle_board-front.png \
-  output/pcbs/middle_board-back.png \
+	output/pcbs/combo_board-front.png \
+	output/pcbs/combo_board-back.png \
+
 

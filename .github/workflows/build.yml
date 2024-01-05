@@ -24,23 +24,23 @@ jobs:
       - name: Export DSN
         uses: ./.github/actions/export-dsn
         with:
-          boards: wing_board middle_board
+          boards: combo_board
       - name: Autoroute PCB
         uses: ./.github/actions/autoroute
         with:
-          boards: wing_board middle_board
+          boards: combo_board
       - name: Import SES
         uses: ./.github/actions/import-ses
         with:
-          boards: wing_board middle_board
+          boards: combo_board
       - name: DRC check
         uses: ./.github/actions/run-drc
         with:
-          boards: wing_board middle_board
+          boards: combo_board
       - name: Export Gerbers
         uses: ./.github/actions/export-gerbers
         with:
-          boards: wing_board middle_board
+          boards: combo_board
       - name: Persist output
         uses: actions/upload-artifact@v3
         with:

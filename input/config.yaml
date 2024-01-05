@@ -33,8 +33,10 @@ points:
       columns:
         pinky:
           key.column_net: FFC_C0
+          rows.thumb.skip: true
         ring:
           key.column_net: FFC_C1
+          rows.thumb.skip: true
         middle:
           key.column_net: FFC_C2
         index:
@@ -43,6 +45,8 @@ points:
           key.column_net: FFC_C4
 
       rows:
+        thumb:
+          row_net: FFC_R3
         bottom:
           row_net: FFC_R2
         home:
@@ -50,26 +54,13 @@ points:
         top:
           row_net: FFC_R0
 
-    thumb_cluster:
-      key:
-        tags: key
-      anchor:
-        ref: matrix_middle_bottom
-        shift: [0, -1ky]
-      columns:
-        one:
-          key.column_net: FFC_C2
-        two:
-          key.column_net: FFC_C3
-        three:
-          key.column_net: FFC_C4
-      rows:
-        thumb_row:
-          row_net: FFC_R3
+      mirror: &mirror
+        ref: matrix_inner_top
+        distance: 5kx
 
     ffc_center:
       anchor:
-        ref: thumb_cluster_three_thumb_row
+        ref: matrix_inner_thumb
         shift: [12, 1]
 
     vias:
@@ -94,8 +85,7 @@ points:
 
     keeb_center:
       anchor:
-        ref: matrix_inner_top
-        shift: [6kx, 0]
+        ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top, matrix_inner_thumb, mirror_matrix_inner_thumb]
 
     #  Controller
     controller:
@@ -123,7 +113,7 @@ outlines:
       where: [[key, -enter, -space]]
       size: [kx/2, ky/2]
 
-  wing_outline:
+  left_wing_outline:
     - what: polygon
       operation: stack
       fillet: 2
@@ -132,35 +122,49 @@ outlines:
           shift: [ -0.5kx, 0.5ky ]
         - ref: matrix_inner_top
           shift: [ 0.5kx + 8, 0.5ky ]
-        - ref: thumb_cluster_three_thumb_row
+        - ref: matrix_inner_thumb
           shift: [ 0.5kx + 8, -0.5ky ]
-        - ref: thumb_cluster_one_thumb_row
+        - ref: matrix_middle_thumb
           shift: [ -0.5kx, -0.5ky ]
-        - ref: thumb_cluster_one_thumb_row
+        - ref: matrix_middle_thumb
           shift: [ -0.5kx, 0.5ky ]
         - ref: matrix_pinky_bottom
           shift: [ -0.5kx, -0.5ky ]
-
-
-  middle_outline:
+  right_wing_outline:
     - what: polygon
       operation: stack
       fillet: 2
       points:
-        - ref: matrix_inner_top
-          shift: [ 0.75kx, 0.75ky ]
-        - ref: matrix_inner_top
-          shift: [ 6.75kx, 0.75ky ]
-        - ref: thumb_cluster_three_thumb_row
-          shift: [ 6.75kx, -0.75ky ]
-        - ref: thumb_cluster_three_thumb_row
-          shift: [ 0.75kx, -0.75ky ]
+        - ref: mirror_matrix_pinky_top
+          shift: [ -0.5kx, 0.5ky ]
+        - ref: mirror_matrix_inner_top
+          shift: [ 0.5kx + 8, 0.5ky ]
+        - ref: mirror_matrix_inner_thumb
+          shift: [ 0.5kx + 8, -0.5ky ]
+        - ref: mirror_matrix_middle_thumb
+          shift: [ -0.5kx, -0.5ky ]
+        - ref: mirror_matrix_middle_thumb
+          shift: [ -0.5kx, 0.5ky ]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [ -0.5kx, -0.5ky ]
 
+  middle_outline:
+    - what: rectangle
+      where: keeb_center
+      fillet: 2
+      size: [4kx, 4ky]
+
+  combo:
+    - name: left_wing_outline
+    - operation: add
+      name: right_wing_outline
+    - operation: add
+      name: middle_outline
 pcbs:
-  wing_board:
+  combo_board:
     outlines:
       wing:
-        outline: wing_outline
+        outline: combo
     footprints:
       choc:
         what: choc
@@ -179,7 +183,6 @@ pcbs:
         what: diode
         where:
           - /matrix_.*/
-          - /thumb_cluster_.*/
         params:
           include_tht: false
           side: back
@@ -190,7 +193,7 @@ pcbs:
           shift: [-3.4, -6]
           rotate: 180
 
-      ffc_connector1:
+      ffc_connector_left:
         what: ffc_connector
         where:
           ref: ffc_center
@@ -214,11 +217,7 @@ pcbs:
         params:
           net: "{{row_net}}"
 
-  middle_board:
-    outlines:
-      middle:
-        outline: middle_outline
-    footprints:
+
       # Controller Area
       promicro:
         what: promicro
