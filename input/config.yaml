@@ -214,15 +214,15 @@ outlines:
     - operation: add
       name: tab_bottom
 pcbs:
-  combo_board:
+  left_board:
     outlines:
       wing:
-        outline: combo
+        outline: wing_outline
     footprints:
       choc:
         what: choc
         where:
-          - /matrix_.*/
+          - /^matrix_.*/
         params:
           show_keycaps: true
           reverse: false
@@ -234,7 +234,7 @@ pcbs:
       diode:
         what: diode
         where:
-          - /matrix_.*/
+          - /^matrix_.*/
         params:
           include_tht: false
           side: back
@@ -263,6 +263,44 @@ pcbs:
           P8: "FFC_C4"
           P9: "wing_ffc_connector_null"
 
+      ffc_vias:
+        what: via
+        where:
+          - /^vias_.*/
+        params:
+          net: "{{row_net}}"
+
+  right_board:
+    outlines:
+      wing:
+        outline: mirror_wing_outline
+    footprints:
+      choc:
+        what: choc
+        where:
+          - /^mirror_matrix_.*/
+        params:
+          show_keycaps: true
+          reverse: false
+          hotswap: true
+          solder: false
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+
+      diode:
+        what: diode
+        where:
+          - /^mirror_matrix_.*/
+        params:
+          include_tht: false
+          side: back
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          designator: "D"
+        adjust:
+          shift: [ -3.4, -6 ]
+          rotate: 180
+
       wing_ffc_connector_mirror:
         what: ffc_connector
         where:
@@ -280,6 +318,19 @@ pcbs:
           P7: "MFFC_C3"
           P8: "MFFC_C4"
           P9: "wing_ffc_connector_mirror_null"
+
+      ffc_vias:
+        what: via
+        where:
+          - /^mirror_vias_.*/
+        params:
+          net: "{{row_net}}"
+
+  middle_board:
+    outlines:
+      wing:
+        outline: middle_outline
+    footprints:
 
       middle_ffc_connector:
         what: ffc_connector
@@ -317,18 +368,10 @@ pcbs:
           P8: "C4"
           P9: "middle_ffc_connector_mirror_null"
 
-      ffc_vias:
-        what: via
-        where:
-          - /vias_.*/
-        params:
-          net: "{{row_net}}"
-
-
       # Controller Area
       promicro:
         what: promicro
-        params:  # Pin Assignments (Controller on top facing down)
+        params: # Pin Assignments (Controller on top facing down)
           orientation: "up"
           # Left side of MCU
           P0: "R0" # Left Row
@@ -368,7 +411,7 @@ pcbs:
           to: RST
         where:
           ref: keeb_center
-          shift: [0, -14]
+          shift: [ 0, -14 ]
 
       trackpad:
         what: azoteq_trackpad
@@ -380,7 +423,7 @@ pcbs:
         what: text_metal
         where:
           ref: keeb_center
-          shift: [0, -10]
+          shift: [ 0, -10 ]
         params:
           text: "github/com/TildeWill/magellan"
           h_size: 2
