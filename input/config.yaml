@@ -357,16 +357,16 @@ pcbs:
           rotate: -90
         params:
           side: "F"
-          P0: "R7"
-          P1: "R6"
+          P0: "middle_ffc_connector_mirror_null"
+          P1: "R4"
           P2: "R5"
-          P3: "R4"
-          P4: "C0"
-          P5: "C1"
-          P6: "C2"
-          P7: "C3"
-          P8: "C4"
-          P9: "middle_ffc_connector_mirror_null"
+          P3: "R6"
+          P4: "R7"
+          P5: "C4"
+          P6: "C3"
+          P7: "C2"
+          P8: "C1"
+          P9: "C0"
 
       # Controller Area
       mcu:

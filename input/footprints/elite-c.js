@@ -3,7 +3,8 @@ module.exports = {
     designator: 'MCU',
     D3: {type: 'net', value: 'D3'},
     D2: {type: 'net', value: 'D2'},
-    GND: {type: 'net', value: 'GND'},
+    GND0: {type: 'net', value: 'GND'},
+    GND1: {type: 'net', value: 'GND1'},
     D1: {type: 'net', value: 'D1'},
     D0: {type: 'net', value: 'D0'},
     D4: {type: 'net', value: 'D4'},
@@ -27,6 +28,7 @@ module.exports = {
     F4: {type: 'net', value: 'F4'},
     VCC: {type: 'net', value: 'VCC'},
     RST: {type: 'net', value: 'RST'},
+    GND2: {type: 'net', value: 'GND2'},
     B0: {type: 'net', value: 'B0'}
   },
   body: p => {
@@ -133,8 +135,8 @@ module.exports = {
         (fp_line (start -12.7 6.35) (end -12.7 8.89) (layer B.SilkS) (width 0.381))
         (pad "1" thru_hole rect (at -13.97 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.D3.str})
         (pad "2" thru_hole circle (at -11.43 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.D2.str})
-        (pad "3" thru_hole circle (at -8.89 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND.str})
-        (pad "4" thru_hole circle (at -6.35 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND.str})
+        (pad "3" thru_hole circle (at -8.89 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND0.str})
+        (pad "4" thru_hole circle (at -6.35 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND1.str})
         (pad "5" thru_hole circle (at -3.81 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.D1.str})
         (pad "6" thru_hole circle (at -1.27 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.D0.str})
         (pad "7" thru_hole circle (at 1.27 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.D4.str})
@@ -142,8 +144,8 @@ module.exports = {
         (pad "9" thru_hole circle (at 6.35 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.D7.str})
         (pad "10" thru_hole circle (at 8.89 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.E6.str})
         (pad "11" thru_hole circle (at 11.43 7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.B4.str})
-        
         (pad "12" thru_hole circle (at 13.97 7.3914) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.B5.str})
+      
         (pad "25" thru_hole circle (at 13.97 5.08) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.B7.str})
         (pad "26" thru_hole circle (at 13.97 2.54) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.D5.str})
         (pad "27" thru_hole circle (at 13.97 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.C7.str})
@@ -160,40 +162,42 @@ module.exports = {
         (pad "20" thru_hole circle (at -3.81 -7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.F4.str})
         (pad "21" thru_hole circle (at -6.35 -7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.VCC.str})
         (pad "22" thru_hole circle (at -8.89 -7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.RST.str})
-        (pad "23" thru_hole circle (at -11.43 -7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND.str})
+        (pad "23" thru_hole circle (at -11.43 -7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND2.str})
         (pad "24" thru_hole circle (at -13.97 -7.62) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.B0.str})
         
         
         
-        (pad "1" smd rect (at -13.97 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "2" smd rect (at -11.43 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "3" smd rect (at -8.89 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "4" smd rect (at -6.35 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "5" smd rect (at -3.81 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "6" smd rect (at -1.27 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "7" smd rect (at 1.27 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "8" smd rect (at 3.81 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "9" smd rect (at 6.35 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "10" smd rect (at 8.89 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "11" smd rect (at 11.43 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "12" smd rect (at 13.97 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "13" smd rect (at 13.97 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "14" smd rect (at 11.43 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "15" smd rect (at 8.89 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "16" smd rect (at 6.35 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "17" smd rect (at 3.81 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "18" smd rect (at 1.27 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "19" smd rect (at -1.27 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "20" smd rect (at -3.81 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "21" smd rect (at -6.35 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "22" smd rect (at -8.89 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "23" smd rect (at -11.43 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "24" smd rect (at -13.97 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "25" smd rect (at 15.875 5.08 ${p.rot + 90}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "26" smd rect (at 15.875 2.54 ${p.rot + 90}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "27" smd rect (at 15.875 0 ${p.rot + 90}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "28" smd rect (at 15.875 -2.54 ${p.rot + 90}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
-        (pad "29" smd rect (at 15.875 -5.08 ${p.rot + 90}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask"))
+        (pad "1" smd rect (at -13.97 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.D3.str})
+        (pad "2" smd rect (at -11.43 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.D2.str})
+        (pad "3" smd rect (at -8.89 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.GND0.str})
+        (pad "4" smd rect (at -6.35 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.GND1.str})
+        (pad "5" smd rect (at -3.81 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.D1.str})
+        (pad "6" smd rect (at -1.27 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.D0.str})
+        (pad "7" smd rect (at 1.27 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.D4.str})
+        (pad "8" smd rect (at 3.81 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.C6.str})
+        (pad "9" smd rect (at 6.35 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.D7.str})
+        (pad "10" smd rect (at 8.89 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.E6.str})
+        (pad "11" smd rect (at 11.43 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.B4.str})
+        (pad "12" smd rect (at 13.97 9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.B5.str})
+        
+        (pad "25" smd rect (at 15.875 5.08 ${p.rot + 90}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.B7.str})
+        (pad "26" smd rect (at 15.875 2.54 ${p.rot + 90}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.D5.str})
+        (pad "27" smd rect (at 15.875 0 ${p.rot + 90}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.C7.str})
+        (pad "28" smd rect (at 15.875 -2.54 ${p.rot + 90}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.F1.str})
+        (pad "29" smd rect (at 15.875 -5.08 ${p.rot + 90}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.F0.str})
+        
+        (pad "13" smd rect (at 13.97 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.B6.str})
+        (pad "14" smd rect (at 11.43 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.B2.str})
+        (pad "15" smd rect (at 8.89 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.B3.str})
+        (pad "16" smd rect (at 6.35 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.B1.str})
+        (pad "17" smd rect (at 3.81 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.F7.str})
+        (pad "18" smd rect (at 1.27 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.F6.str})
+        (pad "19" smd rect (at -1.27 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.F5.str})
+        (pad "20" smd rect (at -3.81 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.F4.str})
+        (pad "21" smd rect (at -6.35 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.VCC.str})
+        (pad "22" smd rect (at -8.89 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.RST.str})
+        (pad "23" smd rect (at -11.43 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.GND2.str})
+        (pad "24" smd rect (at -13.97 -9.398 ${p.rot}) (size 2 3.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.B0.str})
         
       )
     `;
