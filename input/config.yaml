@@ -98,12 +98,11 @@ points:
         ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top, matrix_inner_thumb, mirror_matrix_inner_thumb]
 
     #  Controller
-    controller:
+    mcu_center:
       anchor:
         ref: keeb_center
-        shift: [0, 16]
+        shift: [16, 16]
       key:
-        name: mcu_center
         width: mcu_x
         height: mcu_y
 
