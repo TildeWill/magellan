@@ -333,7 +333,7 @@ pcbs:
         params:
           D3: 'SCL'
           D2: 'SDA'
-#          GND0: ''
+          GND0: 'GND0'
 #          GND1: ''
           D1: 'R3'
           D0: 'R2'
@@ -358,7 +358,7 @@ pcbs:
           F6: 'R5'
           F5: 'R6'
           F4: 'R7'
-#          VCC: ''
+          VCC: 'VCC'
           RST: 'RST'
           GND2: 'GND'
 #          B0: ''
@@ -378,6 +378,7 @@ pcbs:
       trackpad:
         what: azoteq_trackpad
         params:
+          GND: 'GND0'
         where:
           ref: trackpad_center
 

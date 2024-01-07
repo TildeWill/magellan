@@ -38,31 +38,37 @@
 module.exports = {
     params: {
         designator: 'TP',
-        from: "",
-        to: ""
+        side: "F",
+        SDA: {type: 'net', value: 'SDA'},
+        SCL: {type: 'net', value: 'SCL'},
+        VCC: {type: 'net', value: 'VCC'},
+        GND: {type: 'net', value: 'GND'},
+        RST: {type: 'net', value: ''},
+        RDY: {type: 'net', value: ''}
     },
     body: p => {
-        const outline = `
+        const footprint = `
             (module TPS65 (layer F.Cu) (tedit 5DD50112)
             ${p.at /* parametric position */}
             (attr virtual)
+            (fp_text reference "${p.ref}" (at 0 0) (layer ${p.side}.SilkS) ${p.ref_hide} (effects (font (size 1.27 1.27) (thickness 0.15))))
 
-            ${'' /* footprint reference */}
-            (fp_text reference "${p.ref}" (at 0 0) (layer F.SilkS) ${p.ref_hide} (effects (font (size 1.27 1.27) (thickness 0.15))))
-
-            ${''/* corner marks - front */}
+            ${''/* corner marks */}
             (fp_line (start -32.5 -24.5) (end -32.5 24.5) (layer F.SilkS) (width 0.15))
             (fp_line (start -32.5 24.5) (end 32.5 24.5) (layer F.SilkS) (width 0.15))
             (fp_line (start 32.5 24.5) (end 32.5 -24.5) (layer F.SilkS) (width 0.15))
             (fp_line (start 32.5 -24.5) (end -32.5 -24.5) (layer F.SilkS) (width 0.15))
+            
+            ${''/* pads */}
+            (pad 0 smd rect (at -12.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.SDA.str})
+            (pad 1 smd rect (at -10.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.SCL.str})
+            (pad 2 smd rect (at -8.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.VCC.str})
+            (pad 3 smd rect (at -6.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.GND.str})
+            (pad 4 smd rect (at -4.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.RST.str})
+            (pad 5 smd rect (at -2.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.RDY.str})
             )
+        
         `
-
-
-        const final = `
-            ${outline}
-        `
-
-        return final
+        return footprint;
     }
 }
