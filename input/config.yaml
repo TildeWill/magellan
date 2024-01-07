@@ -138,8 +138,7 @@ points:
     trackpad_center:
       anchor:
         ref: keeb_center
-        shift: [0, 16]
-
+        shift: [0, 9]
 
 outlines:
   _keys:
@@ -213,6 +212,7 @@ outlines:
       name: tab_top
     - operation: add
       name: tab_bottom
+
 pcbs:
   left_board:
     outlines:
@@ -369,37 +369,37 @@ pcbs:
           P9: "middle_ffc_connector_mirror_null"
 
       # Controller Area
-      promicro:
-        what: promicro
-        params: # Pin Assignments (Controller on top facing down)
-          orientation: "up"
-          # Left side of MCU
-          P0: "R0" # Left Row
-          P1: "R1" # Left Row
-          # GND
-          # GND
-          P2: "SDA" # I2C
-          P3: "SCL" # I2C
-          P4: "R2" # Left Row
-          P5: "R3" # Left Row
-          P6: "R4" # Right Row
-          P7: "R5" # Right Row
-          P8: "R6" # Right Row
-          P9: "R7" # Right Row
+      mcu:
+        what: elite-c
+        params:
+          D3: 'SCL'
+          D2: 'SDA'
+          D1: 'R3'
+          D0: 'R2'
+          D4: 'R1'
+          C6: 'R0'
+#          D7: ''
+#          E6: ''
+#          B4: ''
+#          B5: ''
 
-          # Right side of MCU
-          # RAW
-          # GND       # Ground
-          # RST       # Reset pin
-          # VCC       # External Power
-          P21: "C0" # Column
-          P20: "C1" # Column
-          P19: "C2" # Column
-          P18: "C3" # Column
-          P15: "C4" # Column
-          # P14:
-          # P16:
-          # P10:
+          B7: 'C0'
+          D5: 'C1'
+          C7: 'C2'
+          F1: 'C3'
+          F0: 'C4'
+
+#          B6: ''
+#          B2: ''
+#          B3: ''
+#          B1: ''
+          F7: 'R4'
+          F6: 'R5'
+          F5: 'R6'
+          F4: 'R7'
+#          VCC: ''
+#          RST: ''
+#          B0: ''
         where:
           ref: mcu_center
           rotate: -90
@@ -411,7 +411,7 @@ pcbs:
           to: RST
         where:
           ref: keeb_center
-          shift: [ 0, -14 ]
+          shift: [ 0, -22 ]
 
       trackpad:
         what: azoteq_trackpad
@@ -423,7 +423,7 @@ pcbs:
         what: text_metal
         where:
           ref: keeb_center
-          shift: [ 0, -10 ]
+          shift: [ 0, -30 ]
         params:
-          text: "github/com/TildeWill/magellan"
+          text: "https://github/com/TildeWill/magellan"
           h_size: 2
