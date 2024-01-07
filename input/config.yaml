@@ -348,7 +348,7 @@ pcbs:
           P6: "C2"
           P7: "C3"
           P8: "C4"
-          P9: "middle_ffc_connector_null"
+#          P9: ""
 
       middle_ffc_connector_mirror:
         what: ffc_connector
@@ -357,7 +357,7 @@ pcbs:
           rotate: -90
         params:
           side: "F"
-          P0: "middle_ffc_connector_mirror_null"
+#          P0: ""
           P1: "R4"
           P2: "R5"
           P3: "R6"
@@ -374,6 +374,8 @@ pcbs:
         params:
           D3: 'SCL'
           D2: 'SDA'
+#          GND0: ''
+#          GND1: ''
           D1: 'R3'
           D0: 'R2'
           D4: 'R1'
@@ -398,7 +400,8 @@ pcbs:
           F5: 'R6'
           F4: 'R7'
 #          VCC: ''
-#          RST: ''
+          RST: 'RST'
+          GND2: 'GND'
 #          B0: ''
         where:
           ref: mcu_center

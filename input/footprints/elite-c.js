@@ -1,35 +1,35 @@
 module.exports = {
   params: {
     designator: 'MCU',
-    D3: {type: 'net', value: 'D3'},
-    D2: {type: 'net', value: 'D2'},
-    GND0: {type: 'net', value: 'GND'},
-    GND1: {type: 'net', value: 'GND1'},
-    D1: {type: 'net', value: 'D1'},
-    D0: {type: 'net', value: 'D0'},
-    D4: {type: 'net', value: 'D4'},
-    C6: {type: 'net', value: 'C6'},
-    D7: {type: 'net', value: 'D7'},
-    E6: {type: 'net', value: 'E6'},
-    B4: {type: 'net', value: 'B4'},
-    B5: {type: 'net', value: 'B5'},
-    B7: {type: 'net', value: 'B7'},
-    D5: {type: 'net', value: 'D5'},
-    C7: {type: 'net', value: 'C7'},
-    F1: {type: 'net', value: 'F1'},
-    F0: {type: 'net', value: 'F0'},
-    B6: {type: 'net', value: 'B6'},
-    B2: {type: 'net', value: 'B2'},
-    B3: {type: 'net', value: 'B3'},
-    B1: {type: 'net', value: 'B1'},
-    F7: {type: 'net', value: 'F7'},
-    F6: {type: 'net', value: 'F6'},
-    F5: {type: 'net', value: 'F5'},
-    F4: {type: 'net', value: 'F4'},
-    VCC: {type: 'net', value: 'VCC'},
-    RST: {type: 'net', value: 'RST'},
-    GND2: {type: 'net', value: 'GND2'},
-    B0: {type: 'net', value: 'B0'}
+    D3: {type: 'net', value: ''},
+    D2: {type: 'net', value: ''},
+    GND0: {type: 'net', value: ''},
+    GND1: {type: 'net', value: ''},
+    D1: {type: 'net', value: ''},
+    D0: {type: 'net', value: ''},
+    D4: {type: 'net', value: ''},
+    C6: {type: 'net', value: ''},
+    D7: {type: 'net', value: ''},
+    E6: {type: 'net', value: ''},
+    B4: {type: 'net', value: ''},
+    B5: {type: 'net', value: ''},
+    B7: {type: 'net', value: ''},
+    D5: {type: 'net', value: ''},
+    C7: {type: 'net', value: ''},
+    F1: {type: 'net', value: ''},
+    F0: {type: 'net', value: ''},
+    B6: {type: 'net', value: ''},
+    B2: {type: 'net', value: ''},
+    B3: {type: 'net', value: ''},
+    B1: {type: 'net', value: ''},
+    F7: {type: 'net', value: ''},
+    F6: {type: 'net', value: ''},
+    F5: {type: 'net', value: ''},
+    F4: {type: 'net', value: ''},
+    VCC: {type: 'net', value: ''},
+    RST: {type: 'net', value: ''},
+    GND2: {type: 'net', value: ''},
+    B0: {type: 'net', value: ''}
   },
   body: p => {
     const footprint = `
@@ -55,81 +55,71 @@ module.exports = {
         (fp_line (start -17.78 8.89) (end 15.24 8.89) (layer B.SilkS) (width 0.381))
         (fp_line (start 15.24 8.89) (end 15.24 -8.89) (layer B.SilkS) (width 0.381))
         (fp_line (start 15.24 -8.89) (end -17.78 -8.89) (layer B.SilkS) (width 0.381))
-        (fp_poly (pts (xy -9.35097 -5.844635) (xy -9.25097 -5.844635) (xy -9.25097 -6.344635) (xy -9.35097 -6.344635)) (layer B.SilkS) (width 0.15))
-        (fp_poly (pts (xy -9.35097 -5.844635) (xy -9.05097 -5.844635) (xy -9.05097 -5.944635) (xy -9.35097 -5.944635)) (layer B.SilkS) (width 0.15))
-        (fp_poly (pts (xy -8.75097 -5.844635) (xy -8.55097 -5.844635) (xy -8.55097 -5.944635) (xy -8.75097 -5.944635)) (layer B.SilkS) (width 0.15))
-        (fp_poly (pts (xy -9.35097 -6.244635) (xy -8.55097 -6.244635) (xy -8.55097 -6.344635) (xy -9.35097 -6.344635)) (layer B.SilkS) (width 0.15))
-        (fp_poly (pts (xy -8.95097 -6.044635) (xy -8.85097 -6.044635) (xy -8.85097 -6.144635) (xy -8.95097 -6.144635)) (layer B.SilkS) (width 0.15))
-        (fp_poly (pts (xy -8.76064 -4.931568) (xy -8.56064 -4.931568) (xy -8.56064 -4.831568) (xy -8.76064 -4.831568)) (layer F.SilkS) (width 0.15))
-        (fp_poly (pts (xy -9.36064 -4.531568) (xy -8.56064 -4.531568) (xy -8.56064 -4.431568) (xy -9.36064 -4.431568)) (layer F.SilkS) (width 0.15))
-        (fp_poly (pts (xy -9.36064 -4.931568) (xy -9.26064 -4.931568) (xy -9.26064 -4.431568) (xy -9.36064 -4.431568)) (layer F.SilkS) (width 0.15))
-        (fp_poly (pts (xy -8.96064 -4.731568) (xy -8.86064 -4.731568) (xy -8.86064 -4.631568) (xy -8.96064 -4.631568)) (layer F.SilkS) (width 0.15))
-        (fp_poly (pts (xy -9.36064 -4.931568) (xy -9.06064 -4.931568) (xy -9.06064 -4.831568) (xy -9.36064 -4.831568)) (layer F.SilkS) (width 0.15))
         (fp_line (start -12.7 6.35) (end -12.7 8.89) (layer F.SilkS) (width 0.381))
         (fp_line (start -15.24 6.35) (end -12.7 6.35) (layer F.SilkS) (width 0.381))
         (fp_line (start 15.24 -8.89) (end -15.24 -8.89) (layer F.SilkS) (width 0.381))
         (fp_line (start 15.24 8.89) (end 15.24 -8.89) (layer F.SilkS) (width 0.381))
         (fp_line (start -15.24 8.89) (end 15.24 8.89) (layer F.SilkS) (width 0.381))
         
-        (fp_text user "TX0/D3" (at -13.97 3.571872 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "D2" (at -11.43 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "GND" (at -6.35 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "GND" (at -8.89 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "D1" (at -3.81 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "D0" (at -1.27 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "D4" (at 1.27 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "C6" (at 3.81 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "D7" (at 6.35 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "E6" (at 8.89 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "B4" (at 11.43 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "B5" (at 12.7 6.4 ${p.rot + 45}) (layer F.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15))) )
-        (fp_text user "B7" (at 12.6 4.5 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15))) )
-        (fp_text user "D5" (at 12.4 2.54 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "C7" (at 12.4 0 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "F1" (at 12.4 -2.54 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "F0" (at 12.6 -4.5 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15))) )
-        (fp_text user "B6" (at 12.7 -6.4 ${p.rot + 135} unlocked) (layer F.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15))) )
-        (fp_text user "B2" (at 11.43 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "B3" (at 8.89 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "B1" (at 6.35 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "F7" (at 3.81 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "F6" (at 1.27 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "F5" (at -1.27 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "F4" (at -3.81 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "VCC" (at -6.35 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "RST" (at -8.92 -5.73312 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "GND" (at -11.43 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
-        (fp_text user "B0" (at -13.97 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.D3.name}" (at -13.97 3.571872 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.D2.name}" (at -11.43 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.GND0.name}" (at -6.35 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.GND1.name}" (at -8.89 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.D1.name}" (at -3.81 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.D0.name}" (at -1.27 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.D4.name}" (at 1.27 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.C6.name}" (at 3.81 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.D7.name}" (at 6.35 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.E6.name}" (at 8.89 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.B4.name}" (at 11.43 5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.B5.name}" (at 12.7 6.4 ${p.rot + 45}) (layer F.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15))) )
+        (fp_text user "${p.B7.name}" (at 12.6 4.5 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15))) )
+        (fp_text user "${p.D5.name}" (at 12.4 2.54 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.C7.name}" (at 12.4 0 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.F1.name}" (at 12.4 -2.54 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.F0.name}" (at 12.6 -4.5 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15))) )
+        (fp_text user "${p.B6.name}" (at 12.7 -6.4 ${p.rot + 135} unlocked) (layer F.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15))) )
+        (fp_text user "${p.B2.name}" (at 11.43 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.B3.name}" (at 8.89 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.B1.name}" (at 6.35 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.F7.name}" (at 3.81 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.F6.name}" (at 1.27 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.F5.name}" (at -1.27 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.F4.name}" (at -3.81 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.VCC.name}" (at -6.35 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.RST.name}" (at -8.92 -5.73312 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.GND2.name}" (at -11.43 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
+        (fp_text user "${p.B0.name}" (at -13.97 -5.461 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))) )
         
-        (fp_text user "TX0/D3" (at -13.97 3.571872 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "D2" (at -11.43 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "GND" (at -8.89 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "GND" (at -6.35 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "D1" (at -3.81 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "D0" (at -1.27 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "D4" (at 1.27 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "C6" (at 3.81 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "D7" (at 6.35 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "E6" (at 8.89 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "B4" (at 11.43 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "B5" (at 12.7 6.4 ${p.rot + 45}) (layer B.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "B7" (at 12.6 4.5 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "D5" (at 12.4 2.54 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "C7" (at 12.4 0 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "F1" (at 12.4 -2.54 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "F0" (at 12.6 -4.5 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "B6" (at 12.7 -6.4 ${p.rot + 135} unlocked) (layer B.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "B2" (at 11.43 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "B3" (at 8.89 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "B1" (at 6.35 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "F7" (at 3.81 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "F6" (at 1.27 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "F5" (at -1.27 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "F4" (at -3.81 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "VCC" (at -6.35 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "RST" (at -8.91 -5.04 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "GND" (at -11.43 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
-        (fp_text user "B0" (at -13.97 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.D3.name}" (at -13.97 3.571872 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.D2.name}" (at -11.43 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.GND0.name}" (at -8.89 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.GND1.name}" (at -6.35 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.D1.name}" (at -3.81 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.D0.name}" (at -1.27 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.D4.name}" (at 1.27 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.C6.name}" (at 3.81 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.D7.name}" (at 6.35 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.E6.name}" (at 8.89 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.B4.name}" (at 11.43 5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.B5.name}" (at 12.7 6.4 ${p.rot + 45}) (layer B.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.B7.name}" (at 12.6 4.5 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.D5.name}" (at 12.4 2.54 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.C7.name}" (at 12.4 0 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.F1.name}" (at 12.4 -2.54 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.F0.name}" (at 12.6 -4.5 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.B6.name}" (at 12.7 -6.4 ${p.rot + 135} unlocked) (layer B.SilkS) (effects (font (size 0.7 0.7) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.B2.name}" (at 11.43 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.B3.name}" (at 8.89 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.B1.name}" (at 6.35 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.F7.name}" (at 3.81 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.F6.name}" (at 1.27 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.F5.name}" (at -1.27 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.F4.name}" (at -3.81 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.VCC.name}" (at -6.35 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.RST.name}" (at -8.91 -5.04 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.GND2.name}" (at -11.43 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
+        (fp_text user "${p.B0.name}" (at -13.97 -5.461 ${p.rot + 90}) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)) )
         
         (fp_line (start -15.24 6.35) (end -12.7 6.35) (layer B.SilkS) (width 0.381))
         (fp_line (start -12.7 6.35) (end -12.7 8.89) (layer B.SilkS) (width 0.381))
