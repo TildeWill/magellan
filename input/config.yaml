@@ -39,40 +39,40 @@ points:
       columns:
         pinky:
           key:
-            column_net: FFC_C0
-            mirror.column_net: MFFC_C0
+            column_net: C0
+            mirror.column_net: C0
           rows.thumb.skip: true
         ring:
           key:
-            column_net: FFC_C1
-            mirror.column_net: MFFC_C1
+            column_net: C1
+            mirror.column_net: C1
           rows.thumb.skip: true
         middle:
           key:
-            column_net: FFC_C2
-            mirror.column_net: MFFC_C2
+            column_net: C2
+            mirror.column_net: C2
         index:
           key:
-            column_net: FFC_C3
-            mirror.column_net: MFFC_C03
+            column_net: C3
+            mirror.column_net: C03
         inner:
           key:
-            column_net: FFC_C4
-            mirror.column_net: MFFC_C4
+            column_net: C4
+            mirror.column_net: C4
 
       rows:
         thumb:
-          row_net: FFC_R3
-          mirror.row_net: MFFC_R3
+          row_net: R3
+          mirror.row_net: R3
         bottom:
-          row_net: FFC_R2
-          mirror.row_net: MFFC_R2
+          row_net: R2
+          mirror.row_net: R2
         home:
-          row_net: FFC_R1
-          mirror.row_net: MFFC_R1
+          row_net: R1
+          mirror.row_net: R1
         top:
-          row_net: FFC_R0
-          mirror.row_net: MFFC_R0
+          row_net: R0
+          mirror.row_net: R0
 
       mirror: &mirror
         ref: matrix_inner_top
@@ -89,33 +89,6 @@ points:
             spread: 12
       rows:
         ffcs:
-      mirror: &mirror
-        ref: matrix_inner_top
-        distance: mirror_width
-
-    vias:
-      key:
-        tags: via
-        padding: 1
-        spread: 1
-      anchor:
-        ref: ffc_centers_wing_ffcs
-        shift: [-4, -6]
-      columns:
-        one:
-      rows:
-        p0:
-          row_net: FFC_R3
-          mirror.row_net: MFFC_R3
-        p1:
-          row_net: FFC_R2
-          mirror.row_net: MFFC_R2
-        p2:
-          row_net: FFC_R1
-          mirror.row_net: MFFC_R1
-        p3:
-          row_net: FFC_R0
-          mirror.row_net: MFFC_R0
       mirror: &mirror
         ref: matrix_inner_top
         distance: mirror_width
@@ -252,23 +225,16 @@ pcbs:
           rotate: 90
         params:
           side: "F"
-          P0: "FFC_R3"
-          P1: "FFC_R2"
-          P2: "FFC_R1"
-          P3: "FFC_R0"
-          P4: "FFC_C0"
-          P5: "FFC_C1"
-          P6: "FFC_C2"
-          P7: "FFC_C3"
-          P8: "FFC_C4"
-          P9: "wing_ffc_connector_null"
-
-      ffc_vias:
-        what: via
-        where:
-          - /^vias_.*/
-        params:
-          net: "{{row_net}}"
+          P9: "R3"
+          P8: "R2"
+          P7: "R1"
+          P6: "R0"
+          P5: "C0"
+          P4: "C1"
+          P3: "C2"
+          P2: "C3"
+          P1: "C4"
+#          P0: ""
 
   right_board:
     outlines:
@@ -308,23 +274,16 @@ pcbs:
           rotate: 90
         params:
           side: "F"
-          P0: "MFFC_R3"
-          P1: "MFFC_R2"
-          P2: "MFFC_R1"
-          P3: "MFFC_R0"
-          P4: "MFFC_C0"
-          P5: "MFFC_C1"
-          P6: "MFFC_C2"
-          P7: "MFFC_C3"
-          P8: "MFFC_C4"
-          P9: "wing_ffc_connector_mirror_null"
-
-      ffc_vias:
-        what: via
-        where:
-          - /^mirror_vias_.*/
-        params:
-          net: "{{row_net}}"
+          P0: "C0"
+          P1: "C1"
+          P2: "C2"
+          P3: "C3"
+          P4: "C4"
+          P5: "R7"
+          P6: "R6"
+          P7: "R5"
+          P8: "R4"
+          P9: ""
 
   middle_board:
     outlines:
@@ -357,16 +316,16 @@ pcbs:
           rotate: -90
         params:
           side: "F"
-#          P0: ""
-          P1: "R4"
-          P2: "R5"
-          P3: "R6"
-          P4: "R7"
-          P5: "C4"
-          P6: "C3"
-          P7: "C2"
-          P8: "C1"
           P9: "C0"
+          P8: "C1"
+          P7: "C2"
+          P6: "C3"
+          P5: "C4"
+          P4: "R7"
+          P3: "R6"
+          P2: "R5"
+          P1: "R4"
+#          P0: ""
 
       # Controller Area
       mcu:
