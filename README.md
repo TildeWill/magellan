@@ -55,6 +55,23 @@ If you would like to modify this:
 
 See the [workflow](.github/workflows/build.yml) or the [Makefile](Makefile) for more details.
 
+### Firmware
+The firmware is written for [QMK](https://qmk.fm/) and lives in this repo. The first time through, you'll need to symlink the firmware folder in this repo to your installation of QMK:
+
+``mkdir -p `qmk env QMK_FIRMWARE`/keyboards/tildewill/magellan && ln -s `pwd`/qmk_firmware/rev1 `qmk env QMK_FIRMWARE`/keyboards/tildewill/magellan``
+
+Then, after you've made your changes to the firmware, you can compile the firmware:
+
+`qmk compile --keyboard tildewill/magellan/rev1 --keymap default`
+
+Then you can either open up the `.hex` in QMK Toolbox or you can try to flash using the command line:
+
+`qmk flash --keyboard tildewill/magellan/rev1 --keymap default`
+
+If you'd like to use a visual editor to adjust the keymap, the QMK Configurator is great. You can generate the necessary JSON file from the C files in this repo:
+
+`qmk c2json --keyboard tildewill/magellan/rev1 --keymap default  > qmk_firmware/rev1/keymaps/default/magellan.json`
+
 ### Disclaimer
 
 Based on the work of Soundmonster https://github.com/soundmonster/samoklava/ where they say:
