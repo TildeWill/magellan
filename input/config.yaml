@@ -101,7 +101,7 @@ points:
     mcu_center:
       anchor:
         ref: keeb_center
-        shift: [16, 16]
+        shift: [10, 16]
       key:
         width: mcu_x
         height: mcu_y
@@ -315,11 +315,11 @@ pcbs:
           rotate: -90
         params:
           side: "F"
-          P9: "C0"
-          P8: "C1"
-          P7: "C2"
-          P6: "C3"
-          P5: "C4"
+          P9: "C5"
+          P8: "C6"
+          P7: "C7"
+          P6: "C8"
+          P5: "C9"
           P4: "R7"
           P3: "R6"
           P2: "R5"
@@ -330,33 +330,33 @@ pcbs:
       mcu:
         what: elite-c
         params:
-          D3: 'SCL'
-          D2: 'SDA'
+          D3: 'R3'
+          D2: 'R2'
           GND0: 'GND0'
 #          GND1: ''
-          D1: 'R3'
-          D0: 'R2'
+          D1: 'SDA'
+          D0: 'SCL'
           D4: 'R1'
           C6: 'R0'
-#          D7: ''
-#          E6: ''
-#          B4: ''
-#          B5: ''
+          D7: 'C0'
+          E6: 'C1'
+          B4: 'C2'
+          B5: 'C3'
 
-          B7: 'C0'
-          D5: 'C1'
-          C7: 'C2'
-          F1: 'C3'
-          F0: 'C4'
+          B7: 'C4'
+#          D5: ''
+#          C7: ''
+#          F1: ''
+          F0: 'R4'
 
-#          B6: ''
-#          B2: ''
-#          B3: ''
-#          B1: ''
-          F7: 'R4'
-          F6: 'R5'
-          F5: 'R6'
-          F4: 'R7'
+          B6: 'R5'
+          B2: 'R6'
+          B3: 'R7'
+          B1: 'C5'
+          F7: 'C6'
+          F6: 'C7'
+          F5: 'C8'
+          F4: 'C9'
           VCC: 'VCC'
           RST: 'RST'
           GND2: 'GND'
