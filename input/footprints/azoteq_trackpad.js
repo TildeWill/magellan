@@ -1,40 +1,11 @@
-// Author: Ergogen + @infused-kim improvements
-//
-// Kailh Choc PG1350
-// Nets
-//    from: corresponds to pin 1
-//    to: corresponds to pin 2
-// Params
-//    reverse: default is false
-//      if true, will flip the footprint such that the pcb can be reversible
-//    hotswap: default is true
-//      if true, will include holes and pads for Kailh choc hotswap sockets
-//    solder: default is false
-//      if true, will include holes to solder switches (works with hotswap too)
-//    outer_pad_width_front: default 2.6
-//    outer_pad_width_back: default 2.6
-//      Allow you to make the outer hotswap pads smaller to silence DRC
-//      warnings when the sockets are to close to the edge cuts.
-//    show_keycaps: default is true
-//      if true, will add choc sized keycap box around the footprint
-//    keycaps_x: default is 18
-//    keycaps_y: default is 17
-//      Allows you to adjust the width of the keycap outline. For example,
-//      to show a 1.5u outline for easier aligning.
-//
-// notes:
-// - hotswap and solder can be used together. The solder holes will then be
-// - added above the hotswap holes.
-//
-// @infused-kim's improvements:
-//  - Added hotswap socket outlines
-//  - Moved switch corner marks from user layer to silk screen
-//  - Added option to adjust keycap size outlines (to show 1.5u outline)
-//  - Added option to add hotswap sockets and direct soldering holes at the
-//    same time
-//  - Made hotswap pads not overlap holes to fix DRC errors
-//  - Fixed DRC errors "Drilled holes co-located"
+/* Footprint for the Azoteq TPS65 Trackpad
+The Azoteq line has what they call a "hotbar" which has 2.00mm pitch that I find a lot easier to deal with than the FFC connector
+This footprint includes a silk for the trackpad itself and six solder pads to match up to the six pads on the "hotbar"
+It is designed to be soldered to 6P, SMD, right angle, PH 2.00mm sockets like these: https://www.aliexpress.us/item/3256802928739446.html
+Then connected to the trackpad using a 6P, PH 2.0mm, same side, 10cm-long, Double Head Terminal Wire like this one: https://www.aliexpress.us/item/3256805957087430.html
 
+In my experience, you only need the first four pins, SDA, SCL, VCC, and GND to get the trackpad to work with QMK, so 4P connectors and cable could be substituted
+*/
 module.exports = {
     params: {
         designator: 'TP',
@@ -60,11 +31,17 @@ module.exports = {
             (fp_line (start 32.5 -24.5) (end -32.5 -24.5) (layer F.SilkS) (width 0.15))
             
             ${''/* pads */}
+            (fp_text user "${p.SDA.name}" (at -12.5 14.5 ${p.rot+90}) (layer ${p.side}.SilkS) (effects (font (size 0.6 0.6) (thickness 0.15))))
             (pad 0 smd rect (at -12.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.SDA.str})
+            (fp_text user "${p.SCL.name}" (at -10.5 14.5 ${p.rot+90}) (layer ${p.side}.SilkS) (effects (font (size 0.6 0.6) (thickness 0.15))))
             (pad 1 smd rect (at -10.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.SCL.str})
+            (fp_text user "${p.VCC.name}" (at -8.5 14.5 ${p.rot+90}) (layer ${p.side}.SilkS) (effects (font (size 0.6 0.6) (thickness 0.15))))
             (pad 2 smd rect (at -8.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.VCC.str})
+            (fp_text user "${p.GND.name}" (at -6.5 14.5 ${p.rot+90}) (layer ${p.side}.SilkS) (effects (font (size 0.6 0.6) (thickness 0.15))))
             (pad 3 smd rect (at -6.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.GND.str})
+            (fp_text user "${p.RST.name}" (at -4.5 14.5 ${p.rot+90}) (layer ${p.side}.SilkS) (effects (font (size 0.6 0.6) (thickness 0.15))))
             (pad 4 smd rect (at -4.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.RST.str})
+            (fp_text user "${p.RDY.name}" (at -2.5 14.5 ${p.rot+90}) (layer ${p.side}.SilkS) (effects (font (size 0.6 0.6) (thickness 0.15))))
             (pad 5 smd rect (at -2.5 17.5 ${p.rot}) (size 1 3) (layers ${p.side}.Cu ${p.side}.Mask ${p.side}.Paste) ${p.RDY.str})
             )
         

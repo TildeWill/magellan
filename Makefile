@@ -4,14 +4,15 @@
 .DEFAULT: all
 
 container_cmd ?= docker
-container_args ?= -w /left_board -v $(shell pwd):/left_board --rm
-LIST = left_board middle_board right_board
+container_args ?= -w /board -v $(shell pwd):/board --rm
+kikit ?= yaqwsx/kikit:v1.3.0
+LIST = board
 
 setup:
 	npm install
 
 # outputs from
-output/pcbs/left_board.kicad_pcb output/pcbs/right_board.kicad_pcb output/pcbs/middle_board.kicad_pcb &: input/config.yaml
+output/pcbs/board.kicad_pcb &: input/config.yaml
 	npm run gen
 
 output/pcbs/%.dsn: output/pcbs/%.kicad_pcb
@@ -35,25 +36,25 @@ output/routed_pcbs/%-drc/: output/routed_pcbs/%.kicad_pcb
 
 output/routed_pcbs/%-front.png: output/routed_pcbs/%.kicad_pcb
 	mkdir -p $(shell dirname $@)
-	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 pcbdraw --style builtin:oshpark-afterdark.json $< $@
+	${container_cmd} run --entrypoint pcbdraw ${container_args} ${kikit} plot --style oshpark-afterdark.json $< $@
 	cp $@ images/
 
 output/routed_pcbs/%-back.png: output/routed_pcbs/%.kicad_pcb
 	mkdir -p $(shell dirname $@)
-	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 pcbdraw -b --style builtin:oshpark-afterdark.json $< $@
+	${container_cmd} run --entrypoint pcbdraw ${container_args} ${kikit} plot --side back --style oshpark-afterdark.json $< $@
 	cp $@ images/
 
 output/pcbs/%-front.png: output/pcbs/%.kicad_pcb
 	mkdir -p $(shell dirname $@)
-	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 pcbdraw --style builtin:oshpark-afterdark.json $< $@
+	${container_cmd} run --entrypoint pcbdraw ${container_args} ${kikit} plot --style oshpark-afterdark.json $< $@
 
 output/pcbs/%-back.png: output/pcbs/%.kicad_pcb
 	mkdir -p $(shell dirname $@)
-	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 pcbdraw -b --style builtin:oshpark-afterdark.json $< $@
+	${container_cmd} run --entrypoint pcbdraw ${container_args} ${kikit} plot --side back --style oshpark-afterdark.json $< $@
 
 output/gerbers/%/gerbers.zip: output/routed_pcbs/%.kicad_pcb
 	mkdir -p $(shell dirname $@)
-	${container_cmd} run ${container_args} yaqwsx/kikit:v0.7 kikit fab jlcpcb --no-assembly $< $(shell dirname $@)
+	${container_cmd} run --entrypoint kikit ${container_args} ${kikit} fab jlcpcb --no-drc --no-assembly $< $(shell dirname $@)
 
 clean:
 	rm -rf output
