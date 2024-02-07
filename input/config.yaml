@@ -72,7 +72,7 @@ points:
         num:
           row_net: R0
           mirror.row_net: R5
-      rotate: -15
+#      rotate: -15
       mirror: &mirror
         ref: matrix_inner_home
         distance: trackpad_width + 1.5kx

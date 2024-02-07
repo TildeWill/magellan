@@ -25,10 +25,10 @@ module.exports = {
             (fp_text reference "${p.ref}" (at 0 0) (layer ${p.side}.SilkS) ${p.ref_hide} (effects (font (size 1.27 1.27) (thickness 0.15))))
 
             ${''/* corner marks */}
-            (fp_line (start -32.5 -24.5) (end -32.5 24.5) (layer F.SilkS) (width 0.15))
-            (fp_line (start -32.5 24.5) (end 32.5 24.5) (layer F.SilkS) (width 0.15))
-            (fp_line (start 32.5 24.5) (end 32.5 -24.5) (layer F.SilkS) (width 0.15))
-            (fp_line (start 32.5 -24.5) (end -32.5 -24.5) (layer F.SilkS) (width 0.15))
+            (fp_arc (start -29.5 21.5) (end -29.5 24.5) (angle 90) (layer F.SilkS) (width 0.15)) ${'' /*bottom left*/}
+            (fp_arc (start 29.5 21.5) (end 32.5 21.5) (angle 90) (layer F.SilkS) (width 0.15)) ${'' /*bottom right*/}
+            (fp_arc (start 29.5 -21.5) (end 29.5 -24.5) (angle 90) (layer F.SilkS) (width 0.15)) ${'' /*top right*/}
+            (fp_arc (start -29.5 -21.5) (end -32.5 -21.5) (angle 90) (layer F.SilkS) (width 0.15)) ${'' /*top left*/}
             
             ${''/* pads */}
             (fp_text user "${p.SDA.name}" (at -12.5 14.5 ${p.rot+90}) (layer ${p.side}.SilkS) (effects (font (size 0.6 0.6) (thickness 0.15))))
