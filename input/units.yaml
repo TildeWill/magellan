@@ -1,0 +1,13 @@
+units:
+  kx: cx
+  ky: cy
+
+  #  double padded variables for case wall
+  dpx: kx+8
+  dpy: ky+8
+
+  mcu_width: 20.5
+  mcu_height: 33
+
+  trackpad_width: 67
+  trackpad_height: 49

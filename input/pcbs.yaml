@@ -1,0 +1,145 @@
+pcbs:
+  board:
+    outlines:
+      combo:
+        outline: full_outline
+    footprints:
+      choc:
+        what: choc
+        where:
+          - /matrix_.*/
+        params:
+          show_keycaps: true
+          reverse: false
+          hotswap: true
+          solder: false
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+
+      hole1:
+        what: mounting_hole
+        where:
+          ref: matrix_outer_num
+          shift: [0.5kx, -0.5ky]
+      hole2:
+        what: mounting_hole
+        where:
+          ref: matrix_outer_thumb
+          shift: [ 0.5kx, 0.5ky ]
+      hole3:
+        what: mounting_hole
+        where:
+          ref: matrix_index_num
+          shift: [ 0.5kx, -0.5ky ]
+      hole4:
+        what: mounting_hole
+        where:
+          ref: matrix_index_thumb
+          shift: [ 0.5kx, 0.5ky ]
+
+      hole5:
+        what: mounting_hole
+        where:
+          ref: mirror_matrix_outer_num
+          shift: [ 0.5kx, -0.5ky ]
+      hole6:
+        what: mounting_hole
+        where:
+          ref: mirror_matrix_outer_thumb
+          shift: [ 0.5kx, 0.5ky ]
+      hole7:
+        what: mounting_hole
+        where:
+          ref: mirror_matrix_index_num
+          shift: [ 0.5kx, -0.5ky ]
+      hole8:
+        what: mounting_hole
+        where:
+          ref: mirror_matrix_index_thumb
+          shift: [ 0.5kx, 0.5ky ]
+
+      diode:
+        what: diode
+        where:
+          - /matrix_.*/
+        params:
+          include_tht: false
+          side: back
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          designator: "D"
+        adjust:
+          shift: [-3.4, -6]
+          rotate: 180
+
+
+      mcu:
+        what: elite-c
+        params:
+          D3: 'AL'
+          D2: 'CL'
+          GND0: 'GND0'
+          #          GND1: ''
+          D1: 'SDA'
+          D0: 'SCL'
+          D4: 'R0'
+          C6: 'R1'
+          D7: 'R2'
+          E6: 'R3'
+          B4: 'R4'
+#          B5: ''
+
+          B7: 'C0'
+          D5: 'C1'
+          C7: 'C2'
+          F1: 'C3'
+          F0: 'C4'
+
+          B6: 'R5'
+          B2: 'R6'
+          B3: 'R7'
+          B1: 'R8'
+          F7: 'R9'
+          F6: 'AR'
+          F5: 'CR'
+#          F4: 'C9'
+          VCC: 'VCC'
+          RST: 'RST'
+          GND2: 'GND'
+        #          B0: ''
+        where:
+          ref: mcu_center
+          rotate: -90
+
+      reset:
+        what: button
+        params:
+          from: GND
+          to: RST
+        where:
+          ref: reset_center
+
+      trackpad:
+        what: azoteq_trackpad
+        params:
+          GND: 'GND0'
+        where:
+          ref: trackpad_center
+
+      rotary_encoders:
+        what: rotary
+        params:
+          A: "{{a_net}}"
+          B: "{{b_net}}"
+          C: "{{c_net}}"
+        where:
+          - /rotary_.*/
+
+      github:
+        what: text_metal
+        where:
+          ref: keeb_center
+          shift: [ 0, -30 ]
+        params:
+          text: "https://github/com/TildeWill/magellan"
+          h_size: 2

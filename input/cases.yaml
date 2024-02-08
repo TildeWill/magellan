@@ -1,0 +1,13 @@
+cases:
+  bottom_plate:
+    - name: full_outline
+      extrude: 1
+  wall:
+    - name: wall_outline
+      extrude: 4
+  bottom_case:
+    - what: case
+      name: bottom_plate
+      operation: add
+    - what: case
+      name: wall

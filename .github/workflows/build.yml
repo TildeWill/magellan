@@ -19,8 +19,10 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Combine YAML files
+        run: npx yaml-merge input/meta.yaml input/units.yaml input/points.yaml input/outlines.yaml input/cases.yaml input/pcbs.yaml > input/config.yaml
       - name: Generate unrouted PCBs
-        run: npm run gen
+        run: npx ergogen /input
       - name: Export DSN
         uses: ./.github/actions/export-dsn
         with:

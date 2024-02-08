@@ -1,0 +1,9 @@
+meta:
+  engine: 4.0.2
+  name: magellan
+  version: 0.1
+  author: TildeWill
+  url: https://github.com/TildeWill/magellan
+  tags: ["wired", "monoblock", "low-profile", "trackpad"]
+  notes:
+    pcb_thickness: "1.2 for a strong hot swap connection"

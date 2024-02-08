@@ -1,0 +1,56 @@
+outlines:
+  keys:
+    - what: rectangle
+      where: key
+      size: [kx-0.5,ky-0.5]
+
+  full_outline:
+    - what: polygon
+      operation: stack
+      fillet: 4
+      points:
+        - ref: matrix_outer_num
+          shift: [ -0.75kx, 0.75ky ]
+        - ref: matrix_inner_num
+          shift: [ 0.75kx, 0.75ky ]
+        - ref: mirror_matrix_inner_num
+          shift: [ 0.75kx, 0.75ky ]
+        - ref: mirror_matrix_outer_num
+          shift: [ -0.75kx, 0.75ky ]
+        - ref: mirror_matrix_outer_thumb
+          shift: [ -0.75kx, -0.75ky ]
+        - ref: mirror_matrix_inner_thumb
+          shift: [ 0.75kx, -0.75ky ]
+        - ref: matrix_inner_thumb
+          shift: [ 0.75kx, -0.75ky ]
+        - ref: matrix_outer_thumb
+          shift: [ -0.75kx, -0.75ky ]
+  _xl_outline:
+    - what: polygon
+      operation: stack
+      fillet: 4
+      points:
+        - ref: matrix_outer_num
+          shift: [ -0.75dpx, 0.75dpy ]
+        - ref: matrix_inner_num
+          shift: [ 0.75dpx, 0.75dpy ]
+        - ref: mirror_matrix_inner_num
+          shift: [ 0.75dpx, 0.75dpy ]
+        - ref: mirror_matrix_outer_num
+          shift: [ -0.75dpx, 0.75dpy ]
+        - ref: mirror_matrix_outer_thumb
+          shift: [ -0.75dpx, -0.75dpy ]
+        - ref: mirror_matrix_inner_thumb
+          shift: [ 0.75dpx, -0.75dpy ]
+        - ref: matrix_inner_thumb
+          shift: [ 0.75dpx, -0.75dpy ]
+        - ref: matrix_outer_thumb
+          shift: [ -0.75dpx, -0.75dpy ]
+  wall_outline:
+    - name: _xl_outline
+    - operation: subtract
+      name: full_outline
+  top_plate:
+    - name: full_outline
+    - operation: subtract
+      name: keys

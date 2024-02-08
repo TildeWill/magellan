@@ -1,0 +1,107 @@
+points:
+  key:
+    padding: 1ky
+    spread: 1kx
+    width: 1kx
+    height: 1ky
+  zones:
+    matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [100, -100]
+      key.tags: key
+      columns:
+        outer:
+          key:
+            column_net: C0
+            mirror.column_net: C0
+        pinky:
+          key:
+            column_net: C1
+            mirror.column_net: C1
+        ring:
+          key:
+            column_net: C2
+            mirror.column_net: C2
+        middle:
+          key:
+            column_net: C3
+            mirror.column_net: C3
+        index:
+          key:
+            column_net: C4
+            mirror.column_net: C4
+        inner:
+          key:
+            column_net: C5
+            mirror.column_net: C5
+
+      rows:
+        thumb:
+          row_net: R4
+          mirror.row_net: R9
+        bottom:
+          row_net: R3
+          mirror.row_net: R8
+        home:
+          row_net: R2
+          mirror.row_net: R7
+        top:
+          row_net: R1
+          mirror.row_net: R6
+        num:
+          row_net: R0
+          mirror.row_net: R5
+      rotate: -15
+      mirror: &mirror
+        ref: matrix_inner_home
+        distance: trackpad_width + 1.5kx
+
+
+    keeb_center:
+      anchor:
+        ref.aggregate.parts: [matrix_inner_num, mirror_matrix_inner_num, matrix_inner_thumb, mirror_matrix_inner_thumb]
+
+    reset_center:
+      anchor:
+        ref: keeb_center
+        shift: [ 18, 38 ]
+
+    rotary_encoder_points:
+      anchor:
+        ref: keeb_center
+        shift: [ -22, 16 ]
+
+      columns:
+        knob:
+          key:
+            a_net: AL
+            b_net: GND
+            c_net: CL
+            mirror.a_net: AR
+            mirror.b_net: GND
+            mirror.c_net: BR
+            rotate: 90
+      rows:
+        collection:
+      mirror: &mirror
+        ref: keeb_center
+
+
+    #  Controller
+    mcu_center:
+      anchor:
+        ref: keeb_center
+        shift: [0, 24]
+      key:
+        width: mcu_width
+        height: mcu_height
+
+    #  Azoteq TPS65 Trackpad
+    trackpad_center:
+      anchor:
+        ref: keeb_center
+        shift: [0, -20]
+      key:
+        width: trackpad_width
+        height: trackpad_height
