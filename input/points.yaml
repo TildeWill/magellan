@@ -104,3 +104,21 @@ points:
       key:
         width: trackpad_width
         height: trackpad_height
+
+    mounting_hole_points:
+      anchor:
+        ref: matrix_outer_num
+        shift: [0.5kx, -0.5ky]
+      key:
+        tags: mounting_holes
+        spread: 4kx
+        padding: -3ky
+      columns:
+        left:
+        right:
+      rows:
+        top:
+        bottom:
+      mirror: &mirror
+        ref: keeb_center
+

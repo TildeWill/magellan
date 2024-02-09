@@ -16,47 +16,9 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}"
 
-      hole1:
+      mounting_holes:
         what: mounting_hole
-        where:
-          ref: matrix_outer_num
-          shift: [0.5kx, -0.5ky]
-      hole2:
-        what: mounting_hole
-        where:
-          ref: matrix_outer_thumb
-          shift: [ 0.5kx, 0.5ky ]
-      hole3:
-        what: mounting_hole
-        where:
-          ref: matrix_index_num
-          shift: [ 0.5kx, -0.5ky ]
-      hole4:
-        what: mounting_hole
-        where:
-          ref: matrix_index_thumb
-          shift: [ 0.5kx, 0.5ky ]
-
-      hole5:
-        what: mounting_hole
-        where:
-          ref: mirror_matrix_outer_num
-          shift: [ 0.5kx, -0.5ky ]
-      hole6:
-        what: mounting_hole
-        where:
-          ref: mirror_matrix_outer_thumb
-          shift: [ 0.5kx, 0.5ky ]
-      hole7:
-        what: mounting_hole
-        where:
-          ref: mirror_matrix_index_num
-          shift: [ 0.5kx, -0.5ky ]
-      hole8:
-        what: mounting_hole
-        where:
-          ref: mirror_matrix_index_thumb
-          shift: [ 0.5kx, 0.5ky ]
+        where: [[mounting_holes]]
 
       diode:
         what: diode
