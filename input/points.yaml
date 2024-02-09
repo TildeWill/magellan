@@ -67,26 +67,25 @@ points:
         ref: keeb_center
         shift: [ 18, 38 ]
 
-    rotary_encoder_points:
+    left_rotary_encoder:
       anchor:
         ref: keeb_center
         shift: [ -22, 16 ]
+      key:
+        tags: rotary
+        a_net: AL
+        b_net: GND
+        c_net: CL
 
-      columns:
-        knob:
-          key:
-            a_net: AL
-            b_net: GND
-            c_net: CL
-            mirror.a_net: AR
-            mirror.b_net: GND
-            mirror.c_net: BR
-            rotate: 90
-      rows:
-        collection:
-      mirror: &mirror
+    right_rotary_encoder:
+      anchor:
         ref: keeb_center
-
+        shift: [ 22, 16 ]
+      key:
+        tags: rotary
+        a_net: AR
+        b_net: GND
+        c_net: CR
 
     #  Controller
     mcu_center:

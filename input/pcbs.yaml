@@ -132,8 +132,9 @@ pcbs:
           A: "{{a_net}}"
           B: "{{b_net}}"
           C: "{{c_net}}"
-        where:
-          - /rotary_.*/
+        where: [[rotary]]
+        adjust:
+          rotate: 90
 
       github:
         what: text_metal
