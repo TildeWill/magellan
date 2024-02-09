@@ -4,7 +4,7 @@ outlines:
       where: key
       size: [kx-0.5,ky-0.5]
 
-  full_outline:
+  pcb_outline:
     - what: polygon
       operation: stack
       fillet: 4
@@ -49,8 +49,8 @@ outlines:
   wall_outline:
     - name: _xl_outline
     - operation: subtract
-      name: full_outline
+      name: pcb_outline
   top_plate:
-    - name: full_outline
+    - name: pcb_outline
     - operation: subtract
       name: keys

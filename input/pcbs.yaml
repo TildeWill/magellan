@@ -2,7 +2,7 @@ pcbs:
   board:
     outlines:
       combo:
-        outline: full_outline
+        outline: pcb_outline
     footprints:
       choc:
         what: choc

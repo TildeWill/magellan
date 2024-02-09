@@ -1,13 +1,13 @@
 cases:
-  bottom_plate:
-    - name: full_outline
-      extrude: 1
-  wall:
+  _bottom_plate:
+    - name: pcb_outline
+      extrude: base_plate_thickness
+  _wall:
     - name: wall_outline
-      extrude: 4
+      extrude: base_plate_thickness + 3
   bottom_case:
     - what: case
-      name: bottom_plate
+      name: _bottom_plate
       operation: add
     - what: case
-      name: wall
+      name: _wall
