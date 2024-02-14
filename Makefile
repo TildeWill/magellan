@@ -7,7 +7,7 @@ container_cmd ?= docker
 container_args ?= -w /board -v $(shell pwd):/board --rm
 kikit ?= yaqwsx/kikit:v1.3.0
 LIST = board
-CASE_PARTS = bottom_case bottom_plate
+CASE_PARTS = bottom_case
 setup:
 	npm install
 

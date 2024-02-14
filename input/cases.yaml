@@ -5,9 +5,16 @@ cases:
   _wall:
     - name: wall_outline
       extrude: base_plate_thickness + 3
+  _bottom_tray:
+    - name: bottom_tray
+      extrude: 2
   bottom_case:
     - what: case
       name: _bottom_plate
       operation: add
     - what: case
       name: _wall
+      operation: add
+    - what: case
+      name: _bottom_tray
+      shift: [0,0,base_plate_thickness]

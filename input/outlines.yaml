@@ -25,31 +25,47 @@ outlines:
           shift: [ 0.75kx, -0.75ky ]
         - ref: matrix_outer_thumb
           shift: [ -0.75kx, -0.75ky ]
-  _xl_outline:
-    - what: polygon
-      operation: stack
-      fillet: 4
-      points:
-        - ref: matrix_outer_num
-          shift: [ -0.75dpx, 0.75dpy ]
-        - ref: matrix_inner_num
-          shift: [ 0.75dpx, 0.75dpy ]
-        - ref: mirror_matrix_inner_num
-          shift: [ 0.75dpx, 0.75dpy ]
-        - ref: mirror_matrix_outer_num
-          shift: [ -0.75dpx, 0.75dpy ]
-        - ref: mirror_matrix_outer_thumb
-          shift: [ -0.75dpx, -0.75dpy ]
-        - ref: mirror_matrix_inner_thumb
-          shift: [ 0.75dpx, -0.75dpy ]
-        - ref: matrix_inner_thumb
-          shift: [ 0.75dpx, -0.75dpy ]
-        - ref: matrix_outer_thumb
-          shift: [ -0.75dpx, -0.75dpy ]
+  xl_outline:
+    - what: outline
+      name: pcb_outline
+      expand: 4
   wall_outline:
-    - name: _xl_outline
+    - name: xl_outline
     - operation: subtract
       name: pcb_outline
+
+  cutouts:
+    - what: circle # center pin
+      radius: 3
+      where: [switch]
+    - what: circle # left support
+      radius: 2
+      where: [ switch ]
+      adjust:
+        shift: [-5,0]
+    - what: circle # right support
+      radius: 2
+      where: [ switch ]
+      adjust:
+        shift: [5,0]
+    - what: rectangle # whole hot swap
+      size: [14,7]
+      corner: 0.5
+      where: [ switch ]
+      adjust:
+        shift: [ 2.5, 4.8]
+    - what: rectangle # diode
+      size: [ 5,3 ]
+      corner: 1.5
+      where: [ switch ]
+      adjust:
+        shift: [ diode_shift_x, diode_shift_y ]
+
+  bottom_tray:
+    - name: pcb_outline
+    - operation: subtract
+      name: cutouts
+
   top_plate:
     - name: pcb_outline
     - operation: subtract

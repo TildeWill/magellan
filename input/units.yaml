@@ -13,3 +13,6 @@ units:
   wall_thickness: 4
   dpx: kx+wall_thickness
   dpy: ky+wall_thickness
+
+  diode_shift_x: -3.4
+  diode_shift_y: -6

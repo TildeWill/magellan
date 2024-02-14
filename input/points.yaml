@@ -9,7 +9,7 @@ points:
       # Fix placement on KiCAD sheet.
       anchor:
         shift: [100, -100]
-      key.tags: key
+      key.tags: switch
       columns:
         outer:
           key:
@@ -56,7 +56,6 @@ points:
       mirror: &mirror
         ref: matrix_inner_home
         distance: trackpad_width + 1.5kx
-
 
     keeb_center:
       anchor:

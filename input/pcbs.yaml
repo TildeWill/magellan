@@ -23,7 +23,7 @@ pcbs:
       diode:
         what: diode
         where:
-          - /matrix_.*/
+          - switch
         params:
           include_tht: false
           side: back
@@ -31,7 +31,7 @@ pcbs:
           to: "{{row_net}}"
           designator: "D"
         adjust:
-          shift: [-3.4, -6]
+          shift: [diode_shift_x, diode_shift_y]
           rotate: 180
 
 
