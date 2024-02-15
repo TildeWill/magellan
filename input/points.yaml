@@ -115,6 +115,12 @@ points:
       columns:
         left:
         right:
+        middle:
+          key:
+            spread: 1kx + 6
+            padding: -4ky
+            stagger: .5kx
+
       rows:
         top:
         bottom:
