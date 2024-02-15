@@ -21,7 +21,7 @@ output/generated: input/config.yaml
 output/pcbs/%.dsn: output/generated
 	# file can not be present or the script will refuse to run
 	if [ -f "$@" ] ; then rm -f $@ ; fi
-	${container_cmd} run ${container_args} soundmonster/kicad-automation-scripts:latest /usr/lib/python2.7/dist-packages/kicad-automation/pcbnew_automation/export_dsn.py $< $@
+	${container_cmd} run ${container_args} soundmonster/kicad-automation-scripts:latest /usr/lib/python2.7/dist-packages/kicad-automation/pcbnew_automation/export_dsn.py output/pcbs/$*.kicad_pcb $@
 
 output/routed_pcbs/%.ses: output/pcbs/%.dsn
 	mkdir -p $(shell dirname $@)
